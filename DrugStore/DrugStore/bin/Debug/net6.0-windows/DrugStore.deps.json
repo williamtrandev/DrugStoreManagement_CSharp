@@ -1,0 +1,64 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DrugStore/1.0.0": {
+        "dependencies": {
+          "BUS": "1.0.0",
+          "DTO": "1.0.0"
+        },
+        "runtime": {
+          "DrugStore.dll": {}
+        }
+      },
+      "BUS/1.0.0": {
+        "dependencies": {
+          "DAO": "1.0.0",
+          "DTO": "1.0.0"
+        },
+        "runtime": {
+          "BUS.dll": {}
+        }
+      },
+      "DAO/1.0.0": {
+        "dependencies": {
+          "DTO": "1.0.0"
+        },
+        "runtime": {
+          "DAO.dll": {}
+        }
+      },
+      "DTO/1.0.0": {
+        "runtime": {
+          "DTO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DrugStore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BUS/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
