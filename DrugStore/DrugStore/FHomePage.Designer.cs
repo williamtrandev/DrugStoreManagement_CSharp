@@ -374,6 +374,7 @@
             this.btn_suanv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_suanv.FlatAppearance.BorderSize = 0;
             this.btn_suanv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_suanv.Image = ((System.Drawing.Image)(resources.GetObject("btn_suanv.Image")));
             this.btn_suanv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_suanv.Location = new System.Drawing.Point(880, 865);
             this.btn_suanv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
