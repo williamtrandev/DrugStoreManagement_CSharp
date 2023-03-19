@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,19 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace homepage
+namespace DrugStore
 {
-    public partial class FHomPage : Form
+    public partial class FHomePage : Form
     {
-        public FHomPage()
+        public FHomePage()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        BindingSource accountList = new BindingSource();
 
         private void btn_qlnv_Click(object sender, EventArgs e)
         {
@@ -80,6 +78,15 @@ namespace homepage
             pnl_onqlbh.Visible = false;
             pnl_onbcthuoc.Visible = false;
             pnl_onbcdoanhthu.Visible = true;
+        }
+        void loadNhanVien()
+        {
+            accountList.DataSource = NhanVienDAO.Instance.getAllAccount();
+        }
+        private void FHomePage_Load(object sender, EventArgs e)
+        {
+            tab_nv.DataSource = accountList;
+            loadNhanVien();
         }
     }
 }
