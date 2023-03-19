@@ -46,7 +46,7 @@ GO
 CREATE TABLE KhoThuoc
 (
 	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK),
-	MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
+	MAPHIEU VARCHAR(10) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
 	HSD DATE NOT NULL,
 	SOLUONG INT DEFAULT 1,
 	PRIMARY KEY(SODK, MAPHIEU)
@@ -54,15 +54,15 @@ CREATE TABLE KhoThuoc
 GO
 CREATE TABLE HoaDon
 (
-	MAHD INT PRIMARY KEY,
+	MAHD VARCHAR(10) PRIMARY KEY,
 	SDT VARCHAR(10) FOREIGN KEY REFERENCES KhachHang(SDT),
 	NGAYXUAT DATE DEFAULT GETDATE(),
-	TONGTIEN FLOAT NOT NULL,
+	TONGTIEN FLOAT,
 )
 GO
 CREATE TABLE ChiTietHoaDon
 (
-	MAHD INT FOREIGN KEY REFERENCES HoaDon(MAHD),
+	MAHD VARCHAR(10) FOREIGN KEY REFERENCES HoaDon(MAHD),
 	SODK VARCHAR(20)  FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
 	SOLUONGBAN INT DEFAULT 1,
 	PRIMARY KEY(MAHD, SODK)
@@ -87,6 +87,20 @@ AS
 BEGIN
 	SELECT * FROM NhanVien WHERE SDT = @sodt AND PASS = @pass
 END
+
+--Them nhan vien
+go
+create proc proc_themNhanVien @sdt varchar(20), @hoten nvarchar(50), @pass varchar(30)
+as
+	insert into NhanVien values(@sdt, @hoten, @pass)
+
+--Xoa nhan vien
+go
+create proc proc_xoaNhanVien @sdt varchar(20)
+as
+	delete from NhanVien where SDT = @sdt
+
+--Sua nhan vien
 
 
 
@@ -145,10 +159,10 @@ as
 --Them phieu nhap hang
 go
 create function func_taoMaPhieu()
-returns varchar(11)
+returns varchar(10)
 as
 begin
-	declare @date date, @date_string varchar(10), @maphieu varchar(11), @num int, @ma varchar(11)
+	declare @date date, @date_string varchar(10), @maphieu varchar(11), @num int, @ma varchar(10)
 	set @date = GETDATE()
 	set @date_string = CONVERT(varchar(10),@date,111)
 	set @date_string = RIGHT(@date_string, 8)
@@ -180,13 +194,24 @@ as
 --Sua phieu nhap hang
 
 --Them Chi tiet phieu nhap hang
-MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
-	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
-	SOLUONGNHAP INT DEFAULT 1,
-	PRIMARY KEY(MAPHIEU, SODK)
+go
+create proc proc_themCTNH @maphieu varchar(10), @sodk varchar(20), @soluongnhap int
+as
+	insert into ChiTietNhapHang values(@maphieu,@sodk,@soluongnhap)
 
-create proc proc_themCTPN @maphieu varchar()
+--Xoa chi tiet phieu nhap hang
 
+--Sua chi tiet phieu nhap hang
+
+--Tinh tong tien phieu nhap hang
+go
+create proc proc_tongTienNhapHang @maphieu varchar(10)
+as
+begin
+	declare @tongtien float
+	set @tongtien = (select SUM(Thuoc.GIANHAP*ctnh.SOLUONGNHAP) from Thuoc join ChiTietNhapHang ctnh on Thuoc.SODK = ctnh.SODK where ctnh.MAPHIEU = @maphieu)
+	update PhieuNhapHang set TONGGIANHAP = @tongtien where MAPHIEU = @maphieu
+end
 
 --Them thuoc vao kho thuoc
 go
@@ -197,3 +222,59 @@ as
 --Xoa thuoc khoi kho thuoc
 
 --Sua thong tin thuoc trong kho
+
+--Them hoa don
+go
+create function func_taoMaHoaDon()
+returns varchar(10)
+as
+begin
+	declare @date date, @date_string varchar(10), @mahd varchar(10), @num int, @ma varchar(10)
+	set @date = GETDATE()
+	set @date_string = CONVERT(varchar(10),@date,111)
+	set @date_string = RIGHT(@date_string, 8)
+	set @date_string = REPLACE(@date_string,'/','')
+	set @ma = 'X' + @date_string
+	set @mahd = (select top 1 MAPHIEU from PhieuNhapHang where LEFT(MAPHIEU,7) = @ma order by MAPHIEU desc)
+	set @num = CAST(RIGHT(@mahd,3) as int)
+	if (@num < 10)
+		set @ma = @ma + '00' + CAST(@num as varchar)
+	else
+	begin
+		if (@num < 100)
+			set @ma = @ma + '0' + CAST(@num as varchar)
+		else
+			set @ma = @ma + CAST(@num as varchar)
+	end
+	return @ma
+end
+
+
+go
+create proc proc_themHoaDon @sdt varchar(10), @ngayxuat date
+as
+	insert into PhieuNhapHang values(dbo.func_taoMaHoaDon(),@sdt,@ngayxuat,null)
+
+--Xoa hoa don
+
+--Sua hoa don
+
+--Them chi tiet hoa don
+go
+create proc proc_themCTHD @mahd varchar(10), @sodk varchar(20), @soluongban int
+as
+	insert into ChiTietHoaDon values(@mahd,@sodk,@soluongban)
+
+--Xoa chi tiet hoa don
+
+--Sua chi tiet hoa don
+
+--Tinh tong tien hoa don
+go
+create proc proc_tongTienHoaDon @mahd varchar(10)
+as
+begin
+	declare @tongtien float
+	set @tongtien = (select SUM(Thuoc.GIANHAP*cthd.SOLUONGBAN) from Thuoc join ChiTietHoaDon cthd on Thuoc.SODK = cthd.SODK where cthd.MAHD = @mahd)
+	update HoaDon set TONGTIEN = @tongtien where MAHD = @mahd
+end
