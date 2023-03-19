@@ -77,7 +77,7 @@
             this.pb_minus.BackColor = System.Drawing.Color.Transparent;
             this.pb_minus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pb_minus.Image = ((System.Drawing.Image)(resources.GetObject("pb_minus.Image")));
-            this.pb_minus.Location = new System.Drawing.Point(949, 6);
+            this.pb_minus.Location = new System.Drawing.Point(950, 7);
             this.pb_minus.Name = "pb_minus";
             this.pb_minus.Size = new System.Drawing.Size(30, 50);
             this.pb_minus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -175,6 +175,31 @@
             this.lb_validate_pass.Name = "lb_validate_pass";
             this.lb_validate_pass.Size = new System.Drawing.Size(0, 28);
             this.lb_validate_pass.TabIndex = 10;
+            // 
+            // tb_phone
+            // 
+            this.tb_phone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
+            this.tb_phone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_phone.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_phone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tb_phone.Location = new System.Drawing.Point(662, 186);
+            this.tb_phone.Name = "tb_phone";
+            this.tb_phone.PlaceholderText = "Nhập tài khoản";
+            this.tb_phone.Size = new System.Drawing.Size(280, 34);
+            this.tb_phone.TabIndex = 4;
+            // 
+            // tb_pass
+            // 
+            this.tb_pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
+            this.tb_pass.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_pass.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_pass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tb_pass.Location = new System.Drawing.Point(662, 301);
+            this.tb_pass.Name = "tb_pass";
+            this.tb_pass.PlaceholderText = "Nhập mật khẩu";
+            this.tb_pass.Size = new System.Drawing.Size(280, 34);
+            this.tb_pass.TabIndex = 5;
+            this.tb_pass.UseSystemPasswordChar = true;
             // 
             // FLogin
             // 
