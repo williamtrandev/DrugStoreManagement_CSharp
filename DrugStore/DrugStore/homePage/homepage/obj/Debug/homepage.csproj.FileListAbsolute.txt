@@ -1,0 +1,11 @@
+C:\Users\84387\source\repos\homepage\homepage\bin\Debug\homepage.exe.config
+C:\Users\84387\source\repos\homepage\homepage\bin\Debug\homepage.exe
+C:\Users\84387\source\repos\homepage\homepage\bin\Debug\homepage.pdb
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.csproj.AssemblyReference.cache
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.csproj.SuggestedBindingRedirects.cache
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.Form1.resources
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.Properties.Resources.resources
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.csproj.GenerateResource.cache
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.csproj.CoreCompileInputs.cache
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.exe
+C:\Users\84387\source\repos\homepage\homepage\obj\Debug\homepage.pdb
