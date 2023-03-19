@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj",
+      "projectUniqueName": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
       "projectName": "DTO",
-      "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj",
+      "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
       "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
-      "outputPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\obj\\",
+      "outputPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",

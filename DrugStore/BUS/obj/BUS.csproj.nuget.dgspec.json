@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\BUS\\BUS.csproj": {}
+    "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj": {}
   },
   "projects": {
-    "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\BUS\\BUS.csproj": {
+    "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\BUS\\BUS.csproj",
+        "projectUniqueName": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
         "projectName": "BUS",
-        "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\BUS\\BUS.csproj",
+        "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
         "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
-        "outputPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\BUS\\obj\\",
+        "outputPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\DAO.csproj": {
-                "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\DAO.csproj"
+              "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj": {
+                "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj"
               },
-              "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj": {
-                "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj"
+              "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj": {
+                "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\DAO.csproj": {
+    "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\DAO.csproj",
+        "projectUniqueName": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj",
         "projectName": "DAO",
-        "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\DAO.csproj",
+        "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj",
         "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
-        "outputPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DAO\\obj\\",
+        "outputPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,8 +93,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj": {
-                "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj"
+              "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj": {
+                "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj"
               }
             }
           }
@@ -108,6 +108,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -131,14 +137,14 @@
         }
       }
     },
-    "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj": {
+    "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj",
+        "projectUniqueName": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\DTO.csproj",
+        "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
         "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
-        "outputPath": "D:\\App\\CNPM_TH\\Pharmacity_DrugStore_Management\\DrugStore\\DTO\\obj\\",
+        "outputPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
