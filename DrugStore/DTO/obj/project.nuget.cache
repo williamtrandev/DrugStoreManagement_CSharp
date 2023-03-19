@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cquh7jjFQDRahORG8eA4mwk5mltDOwOart8d9VIdJQfCzNkltB1BofB60xezXUdIVyjAkCsboOhJFlGueugooQ==",
+  "dgSpecHash": "3VFoP1h+RpiXVRyTK8J7MiCApXloJFdS/MSMGFCYTOz8VcFDUfjKuOBb96c7STCPe6H1pRNvKZ/8Ea+6RexTNA==",
   "success": true,
-  "projectFilePath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
+  "projectFilePath": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

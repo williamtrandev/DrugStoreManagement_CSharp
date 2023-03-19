@@ -29,7 +29,7 @@ CREATE TABLE Thuoc
 
 CREATE TABLE PhieuNhapHang
 (
-	MAPHIEU VARCHAR(11) PRIMARY KEY,
+	MAPHIEU VARCHAR(10) PRIMARY KEY,
 	MANCC VARCHAR(10) FOREIGN KEY REFERENCES NhaCungCap(MANCC),
 	NGAYLAP DATE DEFAULT GETDATE(),
 	TONGGIANHAP FLOAT
@@ -37,7 +37,7 @@ CREATE TABLE PhieuNhapHang
 GO
 CREATE TABLE ChiTietNhapHang
 (
-	MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
+	MAPHIEU VARCHAR(10) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
 	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
 	SOLUONGNHAP INT DEFAULT 1,
 	PRIMARY KEY(MAPHIEU, SODK)
@@ -163,28 +163,37 @@ begin
 		if (@num < 100)
 			set @ma = @ma + '0' + CAST(@num as varchar)
 		else
-			set @ma = @ma + '00' + CAST(@num as varchar)
+			set @ma = @ma + CAST(@num as varchar)
 	end
 	return @ma
 end
 
 
 go
---create proc proc_themPhieuNhap @mancc varchar(10), @ngaylap date
---as
-	--insert into PhieuNhapHang values(dbo.func_taoMaPhieu(),@mancc,@ngaylap,null)
+create proc proc_themPhieuNhap @mancc varchar(10), @ngaylap date
+as
+	insert into PhieuNhapHang values(dbo.func_taoMaPhieu(),@mancc,@ngaylap,null)
 
 
 --Xoa phieu nhap hang
 
 --Sua phieu nhap hang
 
---Them kho thuoc
---SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK),
-	--MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang,
-	--HSD DATE NOT NULL,
-	--SOLUONG INT DEFAULT 1,
-	--PRIMARY KEY(SODK, MAPHIEU)
+--Them Chi tiet phieu nhap hang
+MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
+	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
+	SOLUONGNHAP INT DEFAULT 1,
+	PRIMARY KEY(MAPHIEU, SODK)
 
+create proc proc_themCTPN @maphieu varchar()
+
+
+--Them thuoc vao kho thuoc
 go
---create proc proc_themKhoThuoc @sodk, 
+create proc proc_themKhoThuoc @sodk varchar(20), @maphieu varchar(11), @hsd date, @soluong int
+as
+	insert into KhoThuoc values(@sodk, @maphieu, @hsd, @soluong)
+
+--Xoa thuoc khoi kho thuoc
+
+--Sua thong tin thuoc trong kho
