@@ -325,9 +325,10 @@
             // 
             // pnl_topdock
             // 
+            this.pnl_topdock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_topdock.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnl_topdock.Controls.Add(this.btn_dangxuat);
-            this.pnl_topdock.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topdock.Location = new System.Drawing.Point(315, 0);
             this.pnl_topdock.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_topdock.Name = "pnl_topdock";
@@ -336,6 +337,8 @@
             // 
             // pnl_qlnv
             // 
+            this.pnl_qlnv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_qlnv.Controls.Add(this.lbl_dsnv);
             this.pnl_qlnv.Controls.Add(this.pnl_dsnv);
             this.pnl_qlnv.Controls.Add(this.btn_xoanv);
@@ -362,7 +365,9 @@
             // 
             // pnl_dsnv
             // 
-            this.pnl_dsnv.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnl_dsnv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_dsnv.Controls.Add(this.tab_nv);
             this.pnl_dsnv.Enabled = false;
             this.pnl_dsnv.Location = new System.Drawing.Point(0, 41);
@@ -373,7 +378,6 @@
             // 
             // tab_nv
             // 
-            this.tab_nv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tab_nv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tab_nv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.tab_nv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -386,12 +390,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tab_nv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tab_nv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tab_nv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab_nv.Location = new System.Drawing.Point(0, 0);
             this.tab_nv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tab_nv.Name = "tab_nv";
             this.tab_nv.RowHeadersWidth = 51;
             this.tab_nv.RowTemplate.Height = 24;
-            this.tab_nv.Size = new System.Drawing.Size(1141, 762);
+            this.tab_nv.Size = new System.Drawing.Size(1144, 764);
             this.tab_nv.TabIndex = 1;
             // 
             // btn_xoanv
@@ -401,7 +406,7 @@
             this.btn_xoanv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_xoanv.Image = ((System.Drawing.Image)(resources.GetObject("btn_xoanv.Image")));
             this.btn_xoanv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_xoanv.Location = new System.Drawing.Point(1025, 804);
+            this.btn_xoanv.Location = new System.Drawing.Point(1025, 813);
             this.btn_xoanv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_xoanv.Name = "btn_xoanv";
             this.btn_xoanv.Size = new System.Drawing.Size(110, 62);
@@ -418,7 +423,7 @@
             this.btn_suanv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_suanv.Image = ((System.Drawing.Image)(resources.GetObject("btn_suanv.Image")));
             this.btn_suanv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_suanv.Location = new System.Drawing.Point(880, 804);
+            this.btn_suanv.Location = new System.Drawing.Point(880, 812);
             this.btn_suanv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_suanv.Name = "btn_suanv";
             this.btn_suanv.Size = new System.Drawing.Size(118, 62);
@@ -434,7 +439,7 @@
             this.btn_themnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_themnv.Image = ((System.Drawing.Image)(resources.GetObject("btn_themnv.Image")));
             this.btn_themnv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_themnv.Location = new System.Drawing.Point(725, 804);
+            this.btn_themnv.Location = new System.Drawing.Point(725, 813);
             this.btn_themnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_themnv.Name = "btn_themnv";
             this.btn_themnv.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -448,11 +453,13 @@
             // 
             // pnl_noidung
             // 
+            this.pnl_noidung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_noidung.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_noidung.BackgroundImage")));
             this.pnl_noidung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnl_noidung.Controls.Add(this.pl_bcthuoc);
             this.pnl_noidung.Controls.Add(this.pnl_qlnv);
-            this.pnl_noidung.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_noidung.Location = new System.Drawing.Point(315, 0);
             this.pnl_noidung.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_noidung.Name = "pnl_noidung";
@@ -461,6 +468,9 @@
             // 
             // pl_bcthuoc
             // 
+            this.pl_bcthuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pl_bcthuoc.Controls.Add(this.btn_reload);
             this.pl_bcthuoc.Controls.Add(this.btn_timkiem);
             this.pl_bcthuoc.Controls.Add(this.tb_timkiem);
@@ -484,7 +494,7 @@
             this.btn_reload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_reload.Image = ((System.Drawing.Image)(resources.GetObject("btn_reload.Image")));
             this.btn_reload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_reload.Location = new System.Drawing.Point(508, 53);
+            this.btn_reload.Location = new System.Drawing.Point(455, 53);
             this.btn_reload.Name = "btn_reload";
             this.btn_reload.Size = new System.Drawing.Size(45, 43);
             this.btn_reload.TabIndex = 10;
@@ -499,9 +509,8 @@
             this.btn_timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_timkiem.Location = new System.Drawing.Point(393, 53);
             this.btn_timkiem.Name = "btn_timkiem";
-            this.btn_timkiem.Size = new System.Drawing.Size(86, 43);
+            this.btn_timkiem.Size = new System.Drawing.Size(43, 43);
             this.btn_timkiem.TabIndex = 9;
-            this.btn_timkiem.Text = "Tìm";
             this.btn_timkiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_timkiem.UseVisualStyleBackColor = true;
             this.btn_timkiem.Click += new System.EventHandler(this.btn_timkiem_Click);
@@ -541,7 +550,9 @@
             // 
             // pl_dsthuoc
             // 
-            this.pl_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pl_dsthuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pl_dsthuoc.Controls.Add(this.tab_dsthuoc);
             this.pl_dsthuoc.Enabled = false;
             this.pl_dsthuoc.Location = new System.Drawing.Point(0, 113);
@@ -552,7 +563,6 @@
             // 
             // tab_dsthuoc
             // 
-            this.tab_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tab_dsthuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tab_dsthuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.tab_dsthuoc.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -565,12 +575,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tab_dsthuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tab_dsthuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tab_dsthuoc.Location = new System.Drawing.Point(1, 2);
+            this.tab_dsthuoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab_dsthuoc.Location = new System.Drawing.Point(0, 0);
             this.tab_dsthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tab_dsthuoc.Name = "tab_dsthuoc";
             this.tab_dsthuoc.RowHeadersWidth = 51;
             this.tab_dsthuoc.RowTemplate.Height = 24;
-            this.tab_dsthuoc.Size = new System.Drawing.Size(1141, 662);
+            this.tab_dsthuoc.Size = new System.Drawing.Size(1144, 668);
             this.tab_dsthuoc.TabIndex = 1;
             // 
             // btn_xoathuoc
