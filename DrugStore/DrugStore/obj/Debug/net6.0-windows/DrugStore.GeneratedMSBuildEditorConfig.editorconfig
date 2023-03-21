@@ -14,4 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DrugStore
-build_property.ProjectDir = C:\Tai_lieu_cua_Tien\2022-2023\HK2\CNPM\project_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\
+build_property.ProjectDir = D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\

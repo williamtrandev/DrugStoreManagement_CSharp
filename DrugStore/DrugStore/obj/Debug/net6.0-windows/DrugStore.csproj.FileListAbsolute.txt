@@ -73,3 +73,5 @@ D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\bin\Debug\net6.0-w
 D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.FAddNV.resources
+D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.FAddThuoc.resources

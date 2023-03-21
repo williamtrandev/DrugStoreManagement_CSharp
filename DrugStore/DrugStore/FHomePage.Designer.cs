@@ -34,8 +34,10 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lbl_pharmacy = new System.Windows.Forms.Label();
             this.btn_dangxuat = new System.Windows.Forms.Button();
-            this.ptb_pharmacy = new System.Windows.Forms.PictureBox();
             this.pnl_leftsidebar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lb_designer = new System.Windows.Forms.Label();
             this.lbl_drugstore = new System.Windows.Forms.Label();
             this.pnl_onqlnv = new System.Windows.Forms.Panel();
             this.btn_qlnv = new System.Windows.Forms.Button();
@@ -57,23 +59,20 @@
             this.btn_themnv = new System.Windows.Forms.Button();
             this.pnl_noidung = new System.Windows.Forms.Panel();
             this.pl_bcthuoc = new System.Windows.Forms.Panel();
+            this.btn_reload = new System.Windows.Forms.Button();
+            this.btn_timkiem = new System.Windows.Forms.Button();
+            this.tb_timkiem = new System.Windows.Forms.TextBox();
+            this.lb_timkiem = new System.Windows.Forms.Label();
             this.lb_dsthuoc = new System.Windows.Forms.Label();
             this.pl_dsthuoc = new System.Windows.Forms.Panel();
             this.tab_dsthuoc = new System.Windows.Forms.DataGridView();
-            this.col_sodk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_tenthuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_hoatchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_qcdg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gianhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_giaban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_xoathuoc = new System.Windows.Forms.Button();
             this.btn_suathuoc = new System.Windows.Forms.Button();
             this.btn_themthuoc = new System.Windows.Forms.Button();
             this.btn_bcthuochh = new System.Windows.Forms.Button();
             this.btn_bcthuocsaphet = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_pharmacy)).BeginInit();
             this.pnl_leftsidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_topdock.SuspendLayout();
             this.pnl_qlnv.SuspendLayout();
             this.pnl_dsnv.SuspendLayout();
@@ -102,6 +101,7 @@
             // 
             this.btn_dangxuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_dangxuat.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_dangxuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_dangxuat.FlatAppearance.BorderSize = 0;
             this.btn_dangxuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dangxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -116,23 +116,14 @@
             this.btn_dangxuat.Text = "Đăng xuất";
             this.btn_dangxuat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_dangxuat.UseVisualStyleBackColor = false;
-            // 
-            // ptb_pharmacy
-            // 
-            this.ptb_pharmacy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptb_pharmacy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ptb_pharmacy.Image = ((System.Drawing.Image)(resources.GetObject("ptb_pharmacy.Image")));
-            this.ptb_pharmacy.Location = new System.Drawing.Point(205, -12);
-            this.ptb_pharmacy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ptb_pharmacy.Name = "ptb_pharmacy";
-            this.ptb_pharmacy.Size = new System.Drawing.Size(128, 164);
-            this.ptb_pharmacy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb_pharmacy.TabIndex = 1;
-            this.ptb_pharmacy.TabStop = false;
+            this.btn_dangxuat.Click += new System.EventHandler(this.btn_dangxuat_Click);
             // 
             // pnl_leftsidebar
             // 
             this.pnl_leftsidebar.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnl_leftsidebar.Controls.Add(this.label1);
+            this.pnl_leftsidebar.Controls.Add(this.pictureBox1);
+            this.pnl_leftsidebar.Controls.Add(this.lb_designer);
             this.pnl_leftsidebar.Controls.Add(this.lbl_pharmacy);
             this.pnl_leftsidebar.Controls.Add(this.lbl_drugstore);
             this.pnl_leftsidebar.Controls.Add(this.pnl_onqlnv);
@@ -145,13 +136,45 @@
             this.pnl_leftsidebar.Controls.Add(this.btn_bcthuoc);
             this.pnl_leftsidebar.Controls.Add(this.pnl_onbcdoanhthu);
             this.pnl_leftsidebar.Controls.Add(this.btn_bcdoanhthu);
-            this.pnl_leftsidebar.Controls.Add(this.ptb_pharmacy);
             this.pnl_leftsidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_leftsidebar.Location = new System.Drawing.Point(0, 0);
             this.pnl_leftsidebar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_leftsidebar.Name = "pnl_leftsidebar";
             this.pnl_leftsidebar.Size = new System.Drawing.Size(315, 955);
             this.pnl_leftsidebar.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(86, 880);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 28);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "LTTN Team";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(163, 839);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 113);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lb_designer
+            // 
+            this.lb_designer.AutoSize = true;
+            this.lb_designer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_designer.ForeColor = System.Drawing.Color.Lime;
+            this.lb_designer.Location = new System.Drawing.Point(4, 884);
+            this.lb_designer.Name = "lb_designer";
+            this.lb_designer.Size = new System.Drawing.Size(90, 23);
+            this.lb_designer.TabIndex = 10;
+            this.lb_designer.Text = "Design by ";
             // 
             // lbl_drugstore
             // 
@@ -438,6 +461,10 @@
             // 
             // pl_bcthuoc
             // 
+            this.pl_bcthuoc.Controls.Add(this.btn_reload);
+            this.pl_bcthuoc.Controls.Add(this.btn_timkiem);
+            this.pl_bcthuoc.Controls.Add(this.tb_timkiem);
+            this.pl_bcthuoc.Controls.Add(this.lb_timkiem);
             this.pl_bcthuoc.Controls.Add(this.lb_dsthuoc);
             this.pl_bcthuoc.Controls.Add(this.pl_dsthuoc);
             this.pl_bcthuoc.Controls.Add(this.btn_xoathuoc);
@@ -451,6 +478,54 @@
             this.pl_bcthuoc.Size = new System.Drawing.Size(1147, 894);
             this.pl_bcthuoc.TabIndex = 7;
             this.pl_bcthuoc.Visible = false;
+            // 
+            // btn_reload
+            // 
+            this.btn_reload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_reload.Image = ((System.Drawing.Image)(resources.GetObject("btn_reload.Image")));
+            this.btn_reload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_reload.Location = new System.Drawing.Point(508, 53);
+            this.btn_reload.Name = "btn_reload";
+            this.btn_reload.Size = new System.Drawing.Size(45, 43);
+            this.btn_reload.TabIndex = 10;
+            this.btn_reload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_reload.UseVisualStyleBackColor = true;
+            this.btn_reload.Click += new System.EventHandler(this.btn_reload_Click);
+            // 
+            // btn_timkiem
+            // 
+            this.btn_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_timkiem.Image = ((System.Drawing.Image)(resources.GetObject("btn_timkiem.Image")));
+            this.btn_timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_timkiem.Location = new System.Drawing.Point(393, 53);
+            this.btn_timkiem.Name = "btn_timkiem";
+            this.btn_timkiem.Size = new System.Drawing.Size(86, 43);
+            this.btn_timkiem.TabIndex = 9;
+            this.btn_timkiem.Text = "Tìm";
+            this.btn_timkiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_timkiem.UseVisualStyleBackColor = true;
+            this.btn_timkiem.Click += new System.EventHandler(this.btn_timkiem_Click);
+            // 
+            // tb_timkiem
+            // 
+            this.tb_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_timkiem.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.tb_timkiem.Location = new System.Drawing.Point(148, 57);
+            this.tb_timkiem.Name = "tb_timkiem";
+            this.tb_timkiem.PlaceholderText = "Nhập tên thuốc";
+            this.tb_timkiem.Size = new System.Drawing.Size(211, 34);
+            this.tb_timkiem.TabIndex = 8;
+            this.tb_timkiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lb_timkiem
+            // 
+            this.lb_timkiem.AutoSize = true;
+            this.lb_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_timkiem.Location = new System.Drawing.Point(51, 60);
+            this.lb_timkiem.Name = "lb_timkiem";
+            this.lb_timkiem.Size = new System.Drawing.Size(91, 28);
+            this.lb_timkiem.TabIndex = 2;
+            this.lb_timkiem.Text = "Tìm kiếm";
             // 
             // lb_dsthuoc
             // 
@@ -469,10 +544,10 @@
             this.pl_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pl_dsthuoc.Controls.Add(this.tab_dsthuoc);
             this.pl_dsthuoc.Enabled = false;
-            this.pl_dsthuoc.Location = new System.Drawing.Point(0, 39);
+            this.pl_dsthuoc.Location = new System.Drawing.Point(0, 113);
             this.pl_dsthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pl_dsthuoc.Name = "pl_dsthuoc";
-            this.pl_dsthuoc.Size = new System.Drawing.Size(1144, 764);
+            this.pl_dsthuoc.Size = new System.Drawing.Size(1144, 668);
             this.pl_dsthuoc.TabIndex = 1;
             // 
             // tab_dsthuoc
@@ -490,63 +565,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tab_dsthuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tab_dsthuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tab_dsthuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_sodk,
-            this.col_tenthuoc,
-            this.col_hoatchat,
-            this.col_dvt,
-            this.col_qcdg,
-            this.col_gianhap,
-            this.col_giaban});
             this.tab_dsthuoc.Location = new System.Drawing.Point(1, 2);
             this.tab_dsthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tab_dsthuoc.Name = "tab_dsthuoc";
             this.tab_dsthuoc.RowHeadersWidth = 51;
             this.tab_dsthuoc.RowTemplate.Height = 24;
-            this.tab_dsthuoc.Size = new System.Drawing.Size(1141, 762);
+            this.tab_dsthuoc.Size = new System.Drawing.Size(1141, 662);
             this.tab_dsthuoc.TabIndex = 1;
-            // 
-            // col_sodk
-            // 
-            this.col_sodk.HeaderText = "Số đăng ký";
-            this.col_sodk.MinimumWidth = 6;
-            this.col_sodk.Name = "col_sodk";
-            // 
-            // col_tenthuoc
-            // 
-            this.col_tenthuoc.HeaderText = "Tên thuốc";
-            this.col_tenthuoc.MinimumWidth = 6;
-            this.col_tenthuoc.Name = "col_tenthuoc";
-            // 
-            // col_hoatchat
-            // 
-            this.col_hoatchat.HeaderText = "Hoạt chất";
-            this.col_hoatchat.MinimumWidth = 6;
-            this.col_hoatchat.Name = "col_hoatchat";
-            // 
-            // col_dvt
-            // 
-            this.col_dvt.HeaderText = "ĐVT";
-            this.col_dvt.MinimumWidth = 6;
-            this.col_dvt.Name = "col_dvt";
-            // 
-            // col_qcdg
-            // 
-            this.col_qcdg.HeaderText = "Quy cách đóng gói";
-            this.col_qcdg.MinimumWidth = 6;
-            this.col_qcdg.Name = "col_qcdg";
-            // 
-            // col_gianhap
-            // 
-            this.col_gianhap.HeaderText = "Giá nhập";
-            this.col_gianhap.MinimumWidth = 6;
-            this.col_gianhap.Name = "col_gianhap";
-            // 
-            // col_giaban
-            // 
-            this.col_giaban.HeaderText = "Giá bán";
-            this.col_giaban.MinimumWidth = 6;
-            this.col_giaban.Name = "col_giaban";
             // 
             // btn_xoathuoc
             // 
@@ -598,6 +623,7 @@
             this.btn_themthuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_themthuoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_themthuoc.UseVisualStyleBackColor = true;
+            this.btn_themthuoc.Click += new System.EventHandler(this.btn_themthuoc_Click);
             // 
             // btn_bcthuochh
             // 
@@ -648,9 +674,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Cửa Hàng";
             this.Load += new System.EventHandler(this.FHomePage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_pharmacy)).EndInit();
             this.pnl_leftsidebar.ResumeLayout(false);
             this.pnl_leftsidebar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_topdock.ResumeLayout(false);
             this.pnl_qlnv.ResumeLayout(false);
             this.pnl_qlnv.PerformLayout();
@@ -669,7 +695,6 @@
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel pnl_leftsidebar;
-        private System.Windows.Forms.PictureBox ptb_pharmacy;
         private System.Windows.Forms.Button btn_bcthuoc;
         private System.Windows.Forms.Button btn_qlbh;
         private System.Windows.Forms.Button btn_qlnh;
@@ -699,15 +724,15 @@
         private Button btn_xoathuoc;
         private Button btn_suathuoc;
         private Button btn_themthuoc;
-        private DataGridViewTextBoxColumn col_sodk;
-        private DataGridViewTextBoxColumn col_tenthuoc;
-        private DataGridViewTextBoxColumn col_hoatchat;
-        private DataGridViewTextBoxColumn col_dvt;
-        private DataGridViewTextBoxColumn col_qcdg;
-        private DataGridViewTextBoxColumn col_gianhap;
-        private DataGridViewTextBoxColumn col_giaban;
         private Button btn_bcthuochh;
         private Button btn_bcthuocsaphet;
+        private Button btn_timkiem;
+        private TextBox tb_timkiem;
+        private Label lb_timkiem;
+        private Button btn_reload;
+        private Label label1;
+        private Label lb_designer;
+        private PictureBox pictureBox1;
     }
 }
 

@@ -40,6 +40,10 @@
             this.pn_tennv = new System.Windows.Forms.Panel();
             this.pl_diachi = new System.Windows.Forms.Panel();
             this.pl_matkhau = new System.Windows.Forms.Panel();
+            this.lb_validate_sdt = new System.Windows.Forms.Label();
+            this.lb_validate_ten = new System.Windows.Forms.Label();
+            this.lb_validate_diachi = new System.Windows.Forms.Label();
+            this.lb_validate_pass = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_thongtinnv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_luu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_huy)).BeginInit();
@@ -112,6 +116,7 @@
             this.pb_luu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_luu.TabIndex = 11;
             this.pb_luu.TabStop = false;
+            this.pb_luu.Click += new System.EventHandler(this.pb_luu_Click);
             // 
             // pb_huy
             // 
@@ -123,6 +128,7 @@
             this.pb_huy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_huy.TabIndex = 12;
             this.pb_huy.TabStop = false;
+            this.pb_huy.Click += new System.EventHandler(this.pb_huy_Click);
             // 
             // pl_sdt
             // 
@@ -164,11 +170,59 @@
             this.pl_matkhau.Size = new System.Drawing.Size(430, 40);
             this.pl_matkhau.TabIndex = 15;
             // 
+            // lb_validate_sdt
+            // 
+            this.lb_validate_sdt.AutoSize = true;
+            this.lb_validate_sdt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_validate_sdt.ForeColor = System.Drawing.Color.Red;
+            this.lb_validate_sdt.Location = new System.Drawing.Point(310, 237);
+            this.lb_validate_sdt.Name = "lb_validate_sdt";
+            this.lb_validate_sdt.Size = new System.Drawing.Size(224, 28);
+            this.lb_validate_sdt.TabIndex = 16;
+            this.lb_validate_sdt.Text = "Số điện thoại chưa nhập";
+            // 
+            // lb_validate_ten
+            // 
+            this.lb_validate_ten.AutoSize = true;
+            this.lb_validate_ten.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_validate_ten.ForeColor = System.Drawing.Color.Red;
+            this.lb_validate_ten.Location = new System.Drawing.Point(310, 321);
+            this.lb_validate_ten.Name = "lb_validate_ten";
+            this.lb_validate_ten.Size = new System.Drawing.Size(226, 28);
+            this.lb_validate_ten.TabIndex = 17;
+            this.lb_validate_ten.Text = "Tên nhân viên chưa nhập";
+            // 
+            // lb_validate_diachi
+            // 
+            this.lb_validate_diachi.AutoSize = true;
+            this.lb_validate_diachi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_validate_diachi.ForeColor = System.Drawing.Color.Red;
+            this.lb_validate_diachi.Location = new System.Drawing.Point(310, 401);
+            this.lb_validate_diachi.Name = "lb_validate_diachi";
+            this.lb_validate_diachi.Size = new System.Drawing.Size(167, 28);
+            this.lb_validate_diachi.TabIndex = 18;
+            this.lb_validate_diachi.Text = "Địa chỉ chưa nhập";
+            // 
+            // lb_validate_pass
+            // 
+            this.lb_validate_pass.AutoSize = true;
+            this.lb_validate_pass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_validate_pass.ForeColor = System.Drawing.Color.Red;
+            this.lb_validate_pass.Location = new System.Drawing.Point(310, 484);
+            this.lb_validate_pass.Name = "lb_validate_pass";
+            this.lb_validate_pass.Size = new System.Drawing.Size(190, 28);
+            this.lb_validate_pass.TabIndex = 19;
+            this.lb_validate_pass.Text = "Mật khẩu chưa nhập";
+            // 
             // FAddNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 653);
+            this.Controls.Add(this.lb_validate_pass);
+            this.Controls.Add(this.lb_validate_diachi);
+            this.Controls.Add(this.lb_validate_ten);
+            this.Controls.Add(this.lb_validate_sdt);
             this.Controls.Add(this.pl_sdt);
             this.Controls.Add(this.pn_tennv);
             this.Controls.Add(this.pl_diachi);
@@ -178,7 +232,7 @@
             this.Controls.Add(this.pb_thongtinnv);
             this.Name = "FAddNV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nhân viên";
+            this.Text = "Thông Tin Nhân Viên";
             this.Load += new System.EventHandler(this.FAddNV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_thongtinnv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_luu)).EndInit();
@@ -192,6 +246,7 @@
             this.pl_matkhau.ResumeLayout(false);
             this.pl_matkhau.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,5 +262,9 @@
         private Panel pn_tennv;
         private Panel pl_diachi;
         private Panel pl_matkhau;
+        private Label lb_validate_sdt;
+        private Label lb_validate_ten;
+        private Label lb_validate_diachi;
+        private Label lb_validate_pass;
     }
 }

@@ -18,7 +18,8 @@ CREATE TABLE KhachHang
 GO
 CREATE TABLE Thuoc 
 (
-	SODK VARCHAR(20) PRIMARY KEY,
+	SODK VARCHAR(20) PRIMARY KEY, 
+	MANCC VARCHAR(10),
 	TENTHUOC NVARCHAR(100) NOT NULL,
 	HOATCHAT NVARCHAR(100) DEFAULT '',
 	DONVITINH NVARCHAR(30) NOT NULL,
@@ -30,7 +31,6 @@ CREATE TABLE Thuoc
 CREATE TABLE PhieuNhapHang
 (
 	MAPHIEU VARCHAR(11) PRIMARY KEY,
-	MANCC VARCHAR(10) FOREIGN KEY REFERENCES NhaCungCap(MANCC),
 	NGAYLAP DATE DEFAULT GETDATE(),
 	TONGGIANHAP FLOAT
 )
@@ -71,11 +71,20 @@ GO
 CREATE TABLE NhanVien
 (
 	SDT VARCHAR(20) PRIMARY KEY,
+	DIACHI NVARCHAR(100),
 	HOTEN NVARCHAR(50) NOT NULL,
 	PASS VARCHAR(30) NOT NULL
 )
 
-insert into NhanVien values('0907640698', N'Trần Tấn Thành', 'admin123')
+
+insert into NhanVien values('0907640698', N'TpHCM', N'Trần Tấn Thành', 'admin123')
+
+
+
+insert into Thuoc values('VN-20514-17', 'NCC1', N'Zinnat tablets 500mg', N'Cefuroxim', N'Viên',N'Hộp 1 vỉ 10 viên', 24.589, 24.589*1.1)
+insert into Thuoc values('VD-31977-19', 'NCC1',N'Cefurovid 250', N'Cefuroxim', N'Viên',N'Hộp 2 vỉ x 5 viên; hộp 10 vỉ x 10 viên', 24.589, 24.589*1.1)
+insert into Thuoc values('VD-31979-19', 'NCC2',N'Zinnat tablets 500mg', N'Erythromycin', N'Viên', N'Hộp 20 gói x 3g', 24.589, 24.589*1.1)
+insert into Thuoc values('VD-31980-19', 'NCC3',N'Hep-Uso 300', N'Ursodeoxycholic acid', N'Viên', N'Hộp 3 vỉ, 10 vỉ x 10 viên', 24.589, 24.589*1.1)
 -------------------------------
 --       Procedure           --
 -------------------------------
@@ -92,12 +101,11 @@ END
 
 --Them thuoc vao danh muc thuoc
 go
-CREATE PROC proc_themThuoc @sodk VARCHAR(20), @tenthuoc NVARCHAR(100), @hoatchat NVARCHAR(100), @donvitinh NVARCHAR(30), @quycachdonggoi NVARCHAR(100), @gianhap FLOAT
+--DROP PROC proc_themThuoc
+CREATE PROC proc_themThuoc @sodk VARCHAR(20), @mancc VARCHAR(10), @tenthuoc NVARCHAR(100), @hoatchat NVARCHAR(100), @donvitinh NVARCHAR(30), @quycachdonggoi NVARCHAR(100), @gianhap FLOAT, @giaban FLOAT
 AS
 begin
-	DECLARE @giaban float
-	set @giaban = @gianhap + @gianhap*10/100
-	insert into Thuoc values(@sodk,@tenthuoc,@hoatchat,@donvitinh,@quycachdonggoi,@gianhap,@giaban)
+	insert into Thuoc values(@sodk,@mancc,@tenthuoc,@hoatchat,@donvitinh,@quycachdonggoi,@gianhap,@giaban)
 end
 
 --Xoa thuoc khoi danh muc thuoc
@@ -145,46 +153,115 @@ as
 --Them phieu nhap hang
 go
 create function func_taoMaPhieu()
-returns varchar(11)
+returns varchar(10)
 as
 begin
-	declare @date date, @date_string varchar(10), @maphieu varchar(11), @num int, @ma varchar(11)
+	declare @date date, @date_string varchar(10), @maphieu varchar(11), @num int, @ma varchar(10)
 	set @date = GETDATE()
 	set @date_string = CONVERT(varchar(10),@date,111)
 	set @date_string = RIGHT(@date_string, 8)
 	set @date_string = REPLACE(@date_string,'/','')
 	set @ma = 'N' + @date_string
-	set @maphieu = (select top 1 MAPHIEU from PhieuNhapHang where LEFT(MAPHIEU,7) = @ma order by MAPHIEU desc)
-	set @num = CAST(RIGHT(@maphieu,3) as int)
-	if (@num < 10)
-		set @ma = @ma + '00' + CAST(@num as varchar)
-	else
+	if EXISTS(select top 1 MAPHIEU from PhieuNhapHang where LEFT(MAPHIEU,7) = @ma order by MAPHIEU desc)
 	begin
-		if (@num < 100)
-			set @ma = @ma + '0' + CAST(@num as varchar)
-		else
+		set @maphieu = (select top 1 MAPHIEU from PhieuNhapHang where LEFT(MAPHIEU,7) = @ma order by MAPHIEU desc)
+		set @num = CAST(RIGHT(@maphieu,3) as int) + 1
+		if (@num < 10)
 			set @ma = @ma + '00' + CAST(@num as varchar)
+		else
+		begin
+			if (@num < 100)
+				set @ma = @ma + '0' + CAST(@num as varchar)
+			else
+				set @ma = @ma + CAST(@num as varchar)
+		end
 	end
+	else
+		set @ma = @ma + '001'
 	return @ma
 end
 
 
 go
---create proc proc_themPhieuNhap @mancc varchar(10), @ngaylap date
---as
-	--insert into PhieuNhapHang values(dbo.func_taoMaPhieu(),@mancc,@ngaylap,null)
 
 
---Xoa phieu nhap hang
-
---Sua phieu nhap hang
-
---Them kho thuoc
---SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK),
-	--MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang,
-	--HSD DATE NOT NULL,
-	--SOLUONG INT DEFAULT 1,
-	--PRIMARY KEY(SODK, MAPHIEU)
 
 go
---create proc proc_themKhoThuoc @sodk, 
+create function func_taoMaHoaDon()
+returns varchar(10)
+as
+begin
+	declare @date date, @date_string varchar(10), @mahd varchar(10), @num int, @ma varchar(10)
+	set @date = GETDATE()
+	set @date_string = CONVERT(varchar(10),@date,111)
+	set @date_string = RIGHT(@date_string, 8)
+	set @date_string = REPLACE(@date_string,'/','')
+	set @ma = 'X' + @date_string
+	if EXISTS((select top 1 MAHD from HoaDon where LEFT(MAHD,7) = @ma order by MAHD desc))
+	begin
+		set @mahd = (select top 1 MAHD from HoaDon where LEFT(MAHD,7) = @ma order by MAHD desc)
+		set @num = CAST(RIGHT(@mahd,3) as int) + 1
+		if (@num < 10)
+			set @ma = @ma + '00' + CAST(@num as varchar)
+		else
+		begin
+			if (@num < 100)
+				set @ma = @ma + '0' + CAST(@num as varchar)
+			else
+				set @ma = @ma + CAST(@num as varchar)
+		end
+	end
+	else
+		set @ma = @ma + '001'
+	return @ma
+end
+
+
+go
+create proc proc_themHoaDon @sdt varchar(10), @ngayxuat date
+as
+	insert into HoaDon values(dbo.func_taoMaHoaDon(),@sdt,@ngayxuat,null)
+
+--Xoa hoa don
+
+--Sua hoa don
+
+--Them chi tiet hoa don
+go
+create proc proc_themCTHD @mahd varchar(10), @sodk varchar(20), @soluongban int
+as
+	insert into ChiTietHoaDon values(@mahd,@sodk,@soluongban)
+
+--Xoa chi tiet hoa don
+
+--Sua chi tiet hoa don
+
+--Tinh tong tien hoa don
+go
+create proc proc_tongTienHoaDon @mahd varchar(10)
+as
+begin
+	declare @tongtien float
+	set @tongtien = (select SUM(Thuoc.GIANHAP*cthd.SOLUONGBAN) from Thuoc join ChiTietHoaDon cthd on Thuoc.SODK = cthd.SODK where cthd.MAHD = @mahd)
+	update HoaDon set TONGTIEN = @tongtien where MAHD = @mahd
+end
+
+
+
+exec dbo.proc_themKH '0123456789' , N'Dung'
+exec dbo.proc_themKH '0246812345' , N'Khoa'
+exec dbo.proc_themKH '0345216798' , N'Huy'
+exec dbo.proc_themKH '0123283242' , N'Thảo'
+exec dbo.proc_themKH '0830127462' , N'Ân'
+
+exec dbo.proc_themHoaDon '0123456789' , '2023/1/12'
+exec dbo.proc_themHoaDon '0246812345' , '2023/1/13'
+exec dbo.proc_themHoaDon '0345216798' , '2023/1/13'
+exec dbo.proc_themHoaDon '0345216798' , '2023/1/14'
+exec dbo.proc_themHoaDon '0123456789' , '2023/1/15'
+exec dbo.proc_themHoaDon '0123283242' , '2023/1/20'
+exec dbo.proc_themHoaDon '0123283242' , '2023/2/09'
+exec dbo.proc_themHoaDon '0246812345' , '2023/2/12'
+exec dbo.proc_themHoaDon '0830127462' , '2023/3/19'
+exec dbo.proc_themHoaDon '0123456789' , '2023/3/20'
+

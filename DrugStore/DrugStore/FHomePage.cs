@@ -1,4 +1,5 @@
-﻿using DAO;
+﻿using BUS;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace DrugStore
         }
 
         BindingSource accountList = new BindingSource();
+        BindingSource drugList = new BindingSource();
 
         private void btn_qlnv_Click(object sender, EventArgs e)
         {
@@ -38,6 +40,7 @@ namespace DrugStore
             pnl_onqlnh.Height = btn_qlnh.Height;
             pnl_onqlnh.Top = btn_qlnh.Top;
             pnl_qlnv.Visible = false;
+            pl_bcthuoc.Visible = false;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = true;
             pnl_onqlbh.Visible = false;
@@ -50,6 +53,7 @@ namespace DrugStore
             pnl_onqlbh.Height = btn_qlbh.Height;
             pnl_onqlbh.Top = btn_qlbh.Top;
             pnl_qlnv.Visible = false;
+            pl_bcthuoc.Visible = false;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = true;
@@ -75,26 +79,69 @@ namespace DrugStore
             pnl_onbcdoanhthu.Height = btn_bcdoanhthu.Height;
             pnl_onbcdoanhthu.Top = btn_bcdoanhthu.Top;
             pnl_qlnv.Visible = false;
+            pl_bcthuoc.Visible = false;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = false;
             pnl_onbcthuoc.Visible = false;
             pnl_onbcdoanhthu.Visible = true;
         }
-        void loadNhanVien()
+        public void loadNhanVien()
         {
             accountList.DataSource = NhanVienDAO.Instance.getAllAccount();
         }
+        public void loadThuoc()
+        {
+            drugList.DataSource = ThuocDAO.Instance.getAllDrugs();
+        }
         private void FHomePage_Load(object sender, EventArgs e)
         {
+            pnl_onbcdoanhthu.Hide();
+            pnl_onbcthuoc.Hide();
+            pnl_onqlbh.Hide();
+            pnl_onqlnh.Hide();
+            pnl_onqlnv.Hide();
             tab_nv.DataSource = accountList;
+            tab_dsthuoc.DataSource = drugList;
             loadNhanVien();
+            loadThuoc();
         }
 
         private void btn_themnv_Click(object sender, EventArgs e)
         {
-            FAddNV f = new FAddNV();
+            FAddNV fa = new FAddNV(this);
+            fa.Show();
+        }
+
+        private void btn_dangxuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FLogin f = new FLogin();
             f.Show();
+        }
+
+        private void btn_themthuoc_Click(object sender, EventArgs e)
+        {
+            FAddThuoc fa = new FAddThuoc(this);
+            fa.Show();
+        }
+
+        private void btn_timkiem_Click(object sender, EventArgs e)
+        {
+            if(tb_timkiem.Text != "") {
+                BindingSource tempDrugList = new BindingSource();
+                string text_search = tb_timkiem.Text.ToString();
+                DataTable dt = ThuocBUS.Instance.timThuoc(text_search);
+                tempDrugList.DataSource = dt;
+                tab_dsthuoc.DataSource= tempDrugList;
+            } 
+
+        }
+
+        private void btn_reload_Click(object sender, EventArgs e)
+        {
+            tab_dsthuoc.DataSource = drugList;
+            tb_timkiem.Text = "";
         }
     }
 }

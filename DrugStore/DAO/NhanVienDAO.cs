@@ -43,7 +43,24 @@ namespace DAO
         }
         public DataTable getAllAccount()
         {
-            return DataProvider.Instance.ExecuteQuery("SELECT SDT AS [Số điện thoại], HOTEN AS [Họ và tên], PASS AS [Mật khẩu] FROM NhanVien");
+            return DataProvider.Instance.ExecuteQuery("SELECT SDT AS [Số điện thoại], DIACHI AS [Địa chỉ],HOTEN AS [Họ và tên], PASS AS [Mật khẩu] FROM NhanVien");
+        }
+        public bool checkExistAccount(String phone)
+        {
+            String query = "SELECT * FROM NhanVien WHERE SDT = @phone";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { phone });
+
+            if (data.Rows.Count == 0)
+            {
+                return false;
+            }
+
+            return true; // return an object NhanVien if exists in database
+        }
+        public bool insertAccountNhanVien(String sdt, String name, String diachi, String pass)
+        {
+            String query = string.Format("INSERT INTO NhanVien VALUES('{0}', N'{1}', N'{2}', '{3}')", sdt, name, diachi, pass);
+            return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
     }
 }

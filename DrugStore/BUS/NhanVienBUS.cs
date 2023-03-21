@@ -32,6 +32,14 @@ namespace BUS
         {
             return DAO.NhanVienDAO.Instance.checkAccount(phone, pass);
         }
+        public bool checkExistAccount(String phone)
+        {
+            return DAO.NhanVienDAO.Instance.checkExistAccount(phone);
+        }
+        public bool insertAccountNhanVien(String sdt, String name, String diachi, String pass)
+        {
+            return DAO.NhanVienDAO.Instance.insertAccountNhanVien(sdt, name, diachi, pass);
+        }
     }
 
 }
