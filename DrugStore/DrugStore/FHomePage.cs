@@ -25,6 +25,7 @@ namespace DrugStore
             pnl_onqlnv.Height = btn_qlnv.Height;
             pnl_onqlnv.Top = btn_qlnv.Top;
             pnl_qlnv.Visible = true;
+            pl_bcthuoc.Visible = false;
             pnl_onqlnv.Visible = true;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = false;
@@ -61,6 +62,7 @@ namespace DrugStore
             pnl_onbcthuoc.Height = btn_bcthuoc.Height;
             pnl_onbcthuoc.Top = btn_bcthuoc.Top;
             pnl_qlnv.Visible = false;
+            pl_bcthuoc.Visible = true;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = false;
@@ -87,6 +89,12 @@ namespace DrugStore
         {
             tab_nv.DataSource = accountList;
             loadNhanVien();
+        }
+
+        private void btn_themnv_Click(object sender, EventArgs e)
+        {
+            FAddNV f = new FAddNV();
+            f.Show();
         }
     }
 }

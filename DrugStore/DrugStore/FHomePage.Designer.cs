@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FHomePage));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lbl_pharmacy = new System.Windows.Forms.Label();
             this.btn_dangxuat = new System.Windows.Forms.Button();
@@ -55,6 +56,22 @@
             this.btn_suanv = new System.Windows.Forms.Button();
             this.btn_themnv = new System.Windows.Forms.Button();
             this.pnl_noidung = new System.Windows.Forms.Panel();
+            this.pl_bcthuoc = new System.Windows.Forms.Panel();
+            this.lb_dsthuoc = new System.Windows.Forms.Label();
+            this.pl_dsthuoc = new System.Windows.Forms.Panel();
+            this.tab_dsthuoc = new System.Windows.Forms.DataGridView();
+            this.col_sodk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_tenthuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_hoatchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_dvt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_qcdg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gianhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_giaban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_xoathuoc = new System.Windows.Forms.Button();
+            this.btn_suathuoc = new System.Windows.Forms.Button();
+            this.btn_themthuoc = new System.Windows.Forms.Button();
+            this.btn_bcthuochh = new System.Windows.Forms.Button();
+            this.btn_bcthuocsaphet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_pharmacy)).BeginInit();
             this.pnl_leftsidebar.SuspendLayout();
             this.pnl_topdock.SuspendLayout();
@@ -62,6 +79,9 @@
             this.pnl_dsnv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tab_nv)).BeginInit();
             this.pnl_noidung.SuspendLayout();
+            this.pl_bcthuoc.SuspendLayout();
+            this.pl_dsthuoc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tab_dsthuoc)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_pharmacy
@@ -275,7 +295,7 @@
             this.btn_bcdoanhthu.Name = "btn_bcdoanhthu";
             this.btn_bcdoanhthu.Size = new System.Drawing.Size(315, 64);
             this.btn_bcdoanhthu.TabIndex = 8;
-            this.btn_bcdoanhthu.Text = "Báo cáo thuốc";
+            this.btn_bcdoanhthu.Text = "Báo cáo doanh thu";
             this.btn_bcdoanhthu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_bcdoanhthu.UseVisualStyleBackColor = false;
             this.btn_bcdoanhthu.Click += new System.EventHandler(this.btn_bcdoanhthu_Click);
@@ -298,11 +318,10 @@
             this.pnl_qlnv.Controls.Add(this.btn_xoanv);
             this.pnl_qlnv.Controls.Add(this.btn_suanv);
             this.pnl_qlnv.Controls.Add(this.btn_themnv);
-            this.pnl_qlnv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_qlnv.Location = new System.Drawing.Point(0, 0);
+            this.pnl_qlnv.Location = new System.Drawing.Point(0, 61);
             this.pnl_qlnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_qlnv.Name = "pnl_qlnv";
-            this.pnl_qlnv.Size = new System.Drawing.Size(1147, 955);
+            this.pnl_qlnv.Size = new System.Drawing.Size(1147, 894);
             this.pnl_qlnv.TabIndex = 6;
             this.pnl_qlnv.Visible = false;
             // 
@@ -323,7 +342,7 @@
             this.pnl_dsnv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnl_dsnv.Controls.Add(this.tab_nv);
             this.pnl_dsnv.Enabled = false;
-            this.pnl_dsnv.Location = new System.Drawing.Point(3, 80);
+            this.pnl_dsnv.Location = new System.Drawing.Point(0, 41);
             this.pnl_dsnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_dsnv.Name = "pnl_dsnv";
             this.pnl_dsnv.Size = new System.Drawing.Size(1144, 764);
@@ -359,7 +378,7 @@
             this.btn_xoanv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_xoanv.Image = ((System.Drawing.Image)(resources.GetObject("btn_xoanv.Image")));
             this.btn_xoanv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_xoanv.Location = new System.Drawing.Point(1025, 865);
+            this.btn_xoanv.Location = new System.Drawing.Point(1025, 804);
             this.btn_xoanv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_xoanv.Name = "btn_xoanv";
             this.btn_xoanv.Size = new System.Drawing.Size(110, 62);
@@ -376,7 +395,7 @@
             this.btn_suanv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_suanv.Image = ((System.Drawing.Image)(resources.GetObject("btn_suanv.Image")));
             this.btn_suanv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_suanv.Location = new System.Drawing.Point(880, 865);
+            this.btn_suanv.Location = new System.Drawing.Point(880, 804);
             this.btn_suanv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_suanv.Name = "btn_suanv";
             this.btn_suanv.Size = new System.Drawing.Size(118, 62);
@@ -392,7 +411,7 @@
             this.btn_themnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_themnv.Image = ((System.Drawing.Image)(resources.GetObject("btn_themnv.Image")));
             this.btn_themnv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_themnv.Location = new System.Drawing.Point(725, 865);
+            this.btn_themnv.Location = new System.Drawing.Point(725, 804);
             this.btn_themnv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_themnv.Name = "btn_themnv";
             this.btn_themnv.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -402,11 +421,13 @@
             this.btn_themnv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_themnv.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_themnv.UseVisualStyleBackColor = true;
+            this.btn_themnv.Click += new System.EventHandler(this.btn_themnv_Click);
             // 
             // pnl_noidung
             // 
             this.pnl_noidung.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_noidung.BackgroundImage")));
             this.pnl_noidung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_noidung.Controls.Add(this.pl_bcthuoc);
             this.pnl_noidung.Controls.Add(this.pnl_qlnv);
             this.pnl_noidung.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_noidung.Location = new System.Drawing.Point(315, 0);
@@ -414,6 +435,203 @@
             this.pnl_noidung.Name = "pnl_noidung";
             this.pnl_noidung.Size = new System.Drawing.Size(1147, 955);
             this.pnl_noidung.TabIndex = 6;
+            // 
+            // pl_bcthuoc
+            // 
+            this.pl_bcthuoc.Controls.Add(this.lb_dsthuoc);
+            this.pl_bcthuoc.Controls.Add(this.pl_dsthuoc);
+            this.pl_bcthuoc.Controls.Add(this.btn_xoathuoc);
+            this.pl_bcthuoc.Controls.Add(this.btn_suathuoc);
+            this.pl_bcthuoc.Controls.Add(this.btn_themthuoc);
+            this.pl_bcthuoc.Controls.Add(this.btn_bcthuochh);
+            this.pl_bcthuoc.Controls.Add(this.btn_bcthuocsaphet);
+            this.pl_bcthuoc.Location = new System.Drawing.Point(0, 61);
+            this.pl_bcthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pl_bcthuoc.Name = "pl_bcthuoc";
+            this.pl_bcthuoc.Size = new System.Drawing.Size(1147, 894);
+            this.pl_bcthuoc.TabIndex = 7;
+            this.pl_bcthuoc.Visible = false;
+            // 
+            // lb_dsthuoc
+            // 
+            this.lb_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lb_dsthuoc.AutoSize = true;
+            this.lb_dsthuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_dsthuoc.Location = new System.Drawing.Point(443, 5);
+            this.lb_dsthuoc.Name = "lb_dsthuoc";
+            this.lb_dsthuoc.Size = new System.Drawing.Size(204, 29);
+            this.lb_dsthuoc.TabIndex = 2;
+            this.lb_dsthuoc.Text = "Danh sách thuốc";
+            this.lb_dsthuoc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pl_dsthuoc
+            // 
+            this.pl_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pl_dsthuoc.Controls.Add(this.tab_dsthuoc);
+            this.pl_dsthuoc.Enabled = false;
+            this.pl_dsthuoc.Location = new System.Drawing.Point(0, 39);
+            this.pl_dsthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pl_dsthuoc.Name = "pl_dsthuoc";
+            this.pl_dsthuoc.Size = new System.Drawing.Size(1144, 764);
+            this.pl_dsthuoc.TabIndex = 1;
+            // 
+            // tab_dsthuoc
+            // 
+            this.tab_dsthuoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tab_dsthuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tab_dsthuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.tab_dsthuoc.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tab_dsthuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.tab_dsthuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tab_dsthuoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_sodk,
+            this.col_tenthuoc,
+            this.col_hoatchat,
+            this.col_dvt,
+            this.col_qcdg,
+            this.col_gianhap,
+            this.col_giaban});
+            this.tab_dsthuoc.Location = new System.Drawing.Point(1, 2);
+            this.tab_dsthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tab_dsthuoc.Name = "tab_dsthuoc";
+            this.tab_dsthuoc.RowHeadersWidth = 51;
+            this.tab_dsthuoc.RowTemplate.Height = 24;
+            this.tab_dsthuoc.Size = new System.Drawing.Size(1141, 762);
+            this.tab_dsthuoc.TabIndex = 1;
+            // 
+            // col_sodk
+            // 
+            this.col_sodk.HeaderText = "Số đăng ký";
+            this.col_sodk.MinimumWidth = 6;
+            this.col_sodk.Name = "col_sodk";
+            // 
+            // col_tenthuoc
+            // 
+            this.col_tenthuoc.HeaderText = "Tên thuốc";
+            this.col_tenthuoc.MinimumWidth = 6;
+            this.col_tenthuoc.Name = "col_tenthuoc";
+            // 
+            // col_hoatchat
+            // 
+            this.col_hoatchat.HeaderText = "Hoạt chất";
+            this.col_hoatchat.MinimumWidth = 6;
+            this.col_hoatchat.Name = "col_hoatchat";
+            // 
+            // col_dvt
+            // 
+            this.col_dvt.HeaderText = "ĐVT";
+            this.col_dvt.MinimumWidth = 6;
+            this.col_dvt.Name = "col_dvt";
+            // 
+            // col_qcdg
+            // 
+            this.col_qcdg.HeaderText = "Quy cách đóng gói";
+            this.col_qcdg.MinimumWidth = 6;
+            this.col_qcdg.Name = "col_qcdg";
+            // 
+            // col_gianhap
+            // 
+            this.col_gianhap.HeaderText = "Giá nhập";
+            this.col_gianhap.MinimumWidth = 6;
+            this.col_gianhap.Name = "col_gianhap";
+            // 
+            // col_giaban
+            // 
+            this.col_giaban.HeaderText = "Giá bán";
+            this.col_giaban.MinimumWidth = 6;
+            this.col_giaban.Name = "col_giaban";
+            // 
+            // btn_xoathuoc
+            // 
+            this.btn_xoathuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_xoathuoc.FlatAppearance.BorderSize = 0;
+            this.btn_xoathuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_xoathuoc.Image = ((System.Drawing.Image)(resources.GetObject("btn_xoathuoc.Image")));
+            this.btn_xoathuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_xoathuoc.Location = new System.Drawing.Point(1025, 804);
+            this.btn_xoathuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_xoathuoc.Name = "btn_xoathuoc";
+            this.btn_xoathuoc.Size = new System.Drawing.Size(110, 62);
+            this.btn_xoathuoc.TabIndex = 4;
+            this.btn_xoathuoc.Text = "Xóa";
+            this.btn_xoathuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_xoathuoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_xoathuoc.UseVisualStyleBackColor = true;
+            // 
+            // btn_suathuoc
+            // 
+            this.btn_suathuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_suathuoc.FlatAppearance.BorderSize = 0;
+            this.btn_suathuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_suathuoc.Image = ((System.Drawing.Image)(resources.GetObject("btn_suathuoc.Image")));
+            this.btn_suathuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_suathuoc.Location = new System.Drawing.Point(880, 804);
+            this.btn_suathuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_suathuoc.Name = "btn_suathuoc";
+            this.btn_suathuoc.Size = new System.Drawing.Size(118, 62);
+            this.btn_suathuoc.TabIndex = 5;
+            this.btn_suathuoc.Text = "Sửa";
+            this.btn_suathuoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_suathuoc.UseVisualStyleBackColor = true;
+            // 
+            // btn_themthuoc
+            // 
+            this.btn_themthuoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_themthuoc.FlatAppearance.BorderSize = 0;
+            this.btn_themthuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_themthuoc.Image = ((System.Drawing.Image)(resources.GetObject("btn_themthuoc.Image")));
+            this.btn_themthuoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_themthuoc.Location = new System.Drawing.Point(725, 804);
+            this.btn_themthuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_themthuoc.Name = "btn_themthuoc";
+            this.btn_themthuoc.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_themthuoc.Size = new System.Drawing.Size(128, 62);
+            this.btn_themthuoc.TabIndex = 3;
+            this.btn_themthuoc.Text = "Thêm";
+            this.btn_themthuoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_themthuoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_themthuoc.UseVisualStyleBackColor = true;
+            // 
+            // btn_bcthuochh
+            // 
+            this.btn_bcthuochh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_bcthuochh.FlatAppearance.BorderSize = 0;
+            this.btn_bcthuochh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_bcthuochh.Image = ((System.Drawing.Image)(resources.GetObject("btn_bcthuochh.Image")));
+            this.btn_bcthuochh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_bcthuochh.Location = new System.Drawing.Point(567, 804);
+            this.btn_bcthuochh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_bcthuochh.Name = "btn_bcthuochh";
+            this.btn_bcthuochh.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_bcthuochh.Size = new System.Drawing.Size(128, 77);
+            this.btn_bcthuochh.TabIndex = 6;
+            this.btn_bcthuochh.Text = "Thuốc hết hạn";
+            this.btn_bcthuochh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_bcthuochh.UseVisualStyleBackColor = true;
+            // 
+            // btn_bcthuocsaphet
+            // 
+            this.btn_bcthuocsaphet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_bcthuocsaphet.FlatAppearance.BorderSize = 0;
+            this.btn_bcthuocsaphet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_bcthuocsaphet.Image = ((System.Drawing.Image)(resources.GetObject("btn_bcthuocsaphet.Image")));
+            this.btn_bcthuocsaphet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_bcthuocsaphet.Location = new System.Drawing.Point(415, 804);
+            this.btn_bcthuocsaphet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_bcthuocsaphet.Name = "btn_bcthuocsaphet";
+            this.btn_bcthuocsaphet.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_bcthuocsaphet.Size = new System.Drawing.Size(128, 77);
+            this.btn_bcthuocsaphet.TabIndex = 7;
+            this.btn_bcthuocsaphet.Text = "Thuốc sắp hết";
+            this.btn_bcthuocsaphet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_bcthuocsaphet.UseVisualStyleBackColor = true;
             // 
             // FHomePage
             // 
@@ -439,6 +657,10 @@
             this.pnl_dsnv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tab_nv)).EndInit();
             this.pnl_noidung.ResumeLayout(false);
+            this.pl_bcthuoc.ResumeLayout(false);
+            this.pl_bcthuoc.PerformLayout();
+            this.pl_dsthuoc.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tab_dsthuoc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,6 +692,22 @@
         private System.Windows.Forms.Button btn_themnv;
         private System.Windows.Forms.Panel pnl_dsnv;
         private System.Windows.Forms.Panel pnl_noidung;
+        private Label lb_dsthuoc;
+        private Panel pl_bcthuoc;
+        private Panel pl_dsthuoc;
+        private DataGridView tab_dsthuoc;
+        private Button btn_xoathuoc;
+        private Button btn_suathuoc;
+        private Button btn_themthuoc;
+        private DataGridViewTextBoxColumn col_sodk;
+        private DataGridViewTextBoxColumn col_tenthuoc;
+        private DataGridViewTextBoxColumn col_hoatchat;
+        private DataGridViewTextBoxColumn col_dvt;
+        private DataGridViewTextBoxColumn col_qcdg;
+        private DataGridViewTextBoxColumn col_gianhap;
+        private DataGridViewTextBoxColumn col_giaban;
+        private Button btn_bcthuochh;
+        private Button btn_bcthuocsaphet;
     }
 }
 
