@@ -50,5 +50,10 @@ namespace DAO
             String query = string.Format("DELETE FROM Thuoc WHERE sodk='{0}'", sodk);
             return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
+        public bool deleteThuocNCC(String mancc)
+        {
+            String query = string.Format("DELETE FROM Thuoc WHERE MANCC='{0}'", mancc);
+            return DataProvider.Instance.ExecuteNonQuery(query) > 0;
+        }
     }
 }

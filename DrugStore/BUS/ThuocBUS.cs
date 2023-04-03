@@ -42,6 +42,10 @@ namespace BUS
         {
             return DAO.ThuocDAO.Instance.deleteThuoc(sodk);
         }
+        public bool deleteThuocNCC(String mancc)
+        {
+            return DAO.ThuocDAO.Instance.deleteThuocNCC(mancc);
+        }
     }
 
 }

@@ -29,8 +29,7 @@ namespace DrugStore
             pnl_onqlnv.Height = btn_qlnv.Height;
             pnl_onqlnv.Top = btn_qlnv.Top;
             pnl_qlnv.Visible = true;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
             pnl_onqlnv.Visible = true;
@@ -49,8 +48,7 @@ namespace DrugStore
             pnl_onqlnh.Height = btn_qlnh.Height;
             pnl_onqlnh.Top = btn_qlnh.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -69,8 +67,7 @@ namespace DrugStore
             pnl_onqlbh.Height = btn_qlbh.Height;
             pnl_onqlbh.Top = btn_qlbh.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = true;
             pnl_qlncc.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -89,8 +86,7 @@ namespace DrugStore
             pnl_onbcdoanhthu.Height = btn_bcdoanhthu.Height;
             pnl_onbcdoanhthu.Top = btn_bcdoanhthu.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -113,7 +109,7 @@ namespace DrugStore
         }
         public void loadNCC()
         {
-            nccList.DataSource = NCC_DAO.Instance.getAllNCC();
+            nccList.DataSource = NhaCungCapDAO.Instance.getAllNCC();
         }
         private void FHomePage_Load(object sender, EventArgs e)
         {
@@ -125,7 +121,7 @@ namespace DrugStore
             
             dgv_nv.DataSource = accountList;
             dgv_dsthuoc.DataSource = drugList;
-            tab_ncc.DataSource = nccList;
+            dgv_ncc.DataSource = nccList;
             loadNhanVien();
             loadThuoc();
             loadNCC();
@@ -178,7 +174,6 @@ namespace DrugStore
                 bool check = ThuocBUS.Instance.deleteThuoc(sodk);
                 if (check)
                 {
-                    MessageBox.Show("Xóa thuốc thành công");
                     loadThuoc();
                 }
                 else
@@ -199,8 +194,7 @@ namespace DrugStore
             pnl_ondmthuoc.Height = btn_dmthuoc.Height;
             pnl_ondmthuoc.Top = btn_dmthuoc.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = true;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = true;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
 
@@ -219,11 +213,10 @@ namespace DrugStore
         {
             pnl_onbcthuoc.Height = btn_bcthuoc.Height;
             pnl_onbcthuoc.Top = btn_bcthuoc.Top;
-            pnl_onkhothuoc.Height = btn_khothuoc.Height;
-            pnl_onkhothuoc.Top = btn_khothuoc.Top;
+            pnl_ondmthuoc.Height = btn_dmthuoc.Height;
+            pnl_ondmthuoc.Top = btn_dmthuoc.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = true;
+            pl_dmthuoc.Visible = true;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -242,8 +235,7 @@ namespace DrugStore
             pnl_onqlkh.Height = btn_qlkh.Height;
             pnl_onqlkh.Top = btn_qlkh.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
             pnl_onqlkh.Visible = true;
@@ -262,10 +254,10 @@ namespace DrugStore
             pnl_onqlncc.Height = btn_qlncc.Height;
             pnl_onqlncc.Top = btn_qlncc.Top;
             pnl_qlnv.Visible = false;
-            pnl_dmthuoc.Visible = false;
-            pnl_khothuoc.Visible = false;
+            pl_dmthuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = true;
+
             pnl_onqlncc.Visible = true;
             pnl_onqlkh.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -275,6 +267,32 @@ namespace DrugStore
             pnl_ondmthuoc.Visible = false;
             pnl_onkhothuoc.Visible = false;
             pnl_onbcdoanhthu.Visible = false;
+        }
+
+        private void btn_xoancc_Click(object sender, EventArgs e)
+        {
+            string mancc = dgv_ncc.CurrentRow.Cells["MANCC"].Value.ToString();
+            string tenncc = dgv_ncc.CurrentRow.Cells["TENNCC1"].Value.ToString();
+            DialogResult res = MessageBox.Show("Xóa nhà cung cấp này thì mọi phiếu nhập hàng và thuốc có liên quan sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenncc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                bool xoaThuoc = ThuocBUS.Instance.deleteThuocNCC(mancc);
+                if (xoaThuoc) { }
+                bool check = NhaCungCapBUS.Instance.deleteNCC(mancc);
+                if (check)
+                {
+                    loadNCC();
+                    loadThuoc();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa nhà cung cấp không thành công");
+                }
+            }
+            if (res == DialogResult.Cancel)
+            {
+
+            }
         }
     }
 }

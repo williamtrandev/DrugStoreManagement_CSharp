@@ -7,6 +7,8 @@ CREATE TABLE NhaCungCap
 (
 	MANCC VARCHAR(10) PRIMARY KEY,
 	TENNCC NVARCHAR(100) NOT NULL,
+	SDT VARCHAR(10),
+	DIACHI NVARCHAR(255)
 )
 GO
 CREATE TABLE KhachHang
@@ -30,14 +32,14 @@ CREATE TABLE Thuoc
 
 CREATE TABLE PhieuNhapHang
 (
-	MAPHIEU VARCHAR(11) PRIMARY KEY,
+	MAPHIEU VARCHAR(10) PRIMARY KEY,
 	NGAYLAP DATE DEFAULT GETDATE(),
 	TONGGIANHAP FLOAT
 )
 GO
 CREATE TABLE ChiTietNhapHang
 (
-	MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
+	MAPHIEU VARCHAR(10) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
 	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
 	SOLUONGNHAP INT DEFAULT 1,
 	PRIMARY KEY(MAPHIEU, SODK)
@@ -46,7 +48,7 @@ GO
 CREATE TABLE KhoThuoc
 (
 	SODK VARCHAR(20) FOREIGN KEY REFERENCES Thuoc(SODK),
-	MAPHIEU VARCHAR(11) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
+	MAPHIEU VARCHAR(10) FOREIGN KEY REFERENCES PhieuNhapHang(MAPHIEU),
 	HSD DATE NOT NULL,
 	SOLUONG INT DEFAULT 1,
 	PRIMARY KEY(SODK, MAPHIEU)
@@ -54,7 +56,7 @@ CREATE TABLE KhoThuoc
 GO
 CREATE TABLE HoaDon
 (
-	MAHD INT PRIMARY KEY,
+	MAHD VARCHAR(10) PRIMARY KEY,
 	SDT VARCHAR(10) FOREIGN KEY REFERENCES KhachHang(SDT),
 	NGAYXUAT DATE DEFAULT GETDATE(),
 	TONGTIEN FLOAT NOT NULL,
@@ -62,7 +64,7 @@ CREATE TABLE HoaDon
 GO
 CREATE TABLE ChiTietHoaDon
 (
-	MAHD INT FOREIGN KEY REFERENCES HoaDon(MAHD),
+	MAHD VARCHAR(10) FOREIGN KEY REFERENCES HoaDon(MAHD),
 	SODK VARCHAR(20)  FOREIGN KEY REFERENCES Thuoc(SODK), --Khoa ngoai den Thuoc nhung bi vuong
 	SOLUONGBAN INT DEFAULT 1,
 	PRIMARY KEY(MAHD, SODK)
@@ -79,7 +81,9 @@ CREATE TABLE NhanVien
 
 insert into NhanVien values('0907640698', N'TpHCM', N'Trần Tấn Thành', 'admin123')
 
-
+insert into NhaCungCap values('NCC1','Dai 1','0123456789','Dia chi dai')
+insert into NhaCungCap values('NCC2','Dai 2','0123456789','Dia chi dai')
+insert into NhaCungCap values('NCC3','Dai 3','0123456789','Dia chi dai')
 
 insert into Thuoc values('VN-20514-17', 'NCC1', N'Zinnat tablets 500mg', N'Cefuroxim', N'Viên',N'Hộp 1 vỉ 10 viên', 24.589, 24.589*1.1)
 insert into Thuoc values('VD-31977-19', 'NCC1',N'Cefurovid 250', N'Cefuroxim', N'Viên',N'Hộp 2 vỉ x 5 viên; hộp 10 vỉ x 10 viên', 24.589, 24.589*1.1)
@@ -125,10 +129,10 @@ end
 
 
 --Them nha cung cap
-go
-create proc proc_themNCC @mancc varchar(10), @tenncc varchar(100)
-as
-	insert into NhaCungCap values(@mancc,@tenncc)
+--go
+--create proc proc_themNCC @mancc varchar(10), @tenncc varchar(100)
+--as
+--	insert into NhaCungCap values(@mancc,@tenncc)
 
 --Xoa nha cung cap
 
