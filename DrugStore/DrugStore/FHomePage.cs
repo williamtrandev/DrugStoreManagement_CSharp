@@ -23,6 +23,7 @@ namespace DrugStore
         BindingSource accountList = new BindingSource();
         BindingSource drugList = new BindingSource();
         BindingSource nccList = new BindingSource();
+        BindingSource customerList = new BindingSource();
 
         private void btn_qlnv_Click(object sender, EventArgs e)
         {
@@ -115,6 +116,10 @@ namespace DrugStore
         {
             nccList.DataSource = NhaCungCapDAO.Instance.getAllNCC();
         }
+        public void loadKhachHang()
+        {
+            customerList.DataSource = KhachHangBUS.Instance.getAllCustomer();
+        }
         private void FHomePage_Load(object sender, EventArgs e)
         {
             pnl_onbcdoanhthu.Hide();
@@ -126,9 +131,11 @@ namespace DrugStore
             dgv_nv.DataSource = accountList;
             dgv_dsthuoc.DataSource = drugList;
             dgv_ncc.DataSource = nccList;
+            dgv_qlkh.DataSource = customerList;
             loadNhanVien();
             loadThuoc();
             loadNCC();
+            loadKhachHang();
         }
 
         private void btn_themnv_Click(object sender, EventArgs e)
@@ -246,6 +253,7 @@ namespace DrugStore
             pnl_khothuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
+            pnl_qlkh.Visible = true;
             pnl_onqlkh.Visible = true;
             pnl_onqlncc.Visible = false;
             pnl_onqlnv.Visible = false;
@@ -265,6 +273,7 @@ namespace DrugStore
             pnl_dmthuoc.Visible = false;
             pnl_khothuoc.Visible = false;
             pnl_laphoadon.Visible = false;
+            
             pnl_qlncc.Visible = true;
             pnl_onqlncc.Visible = true;
             pnl_onqlkh.Visible = false;
@@ -300,6 +309,39 @@ namespace DrugStore
             if (res == DialogResult.Cancel)
             {
 
+            }
+        }
+
+        private void btn_themkh_Click(object sender, EventArgs e)
+        {
+            FAddKhachHang fa = new FAddKhachHang(false, this);
+            fa.Show();
+        }
+
+        private void btn_suakh_Click(object sender, EventArgs e)
+        {
+            string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
+            string name = dgv_qlkh.CurrentRow.Cells["TENKH"].Value.ToString();
+            FAddKhachHang fa = new FAddKhachHang(true, this, sdt, name);
+            fa.Show();
+        }
+
+        private void btn_xoakh_Click(object sender, EventArgs e)
+        {
+            string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
+            DialogResult res = MessageBox.Show("Xóa thuốc khách hàng này không thể undo", "Bạn có chắc là muốn xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                bool check = KhachHangBUS.Instance.deleteCustomer(sdt);
+                if (check)
+                {
+                    MessageBox.Show("Xóa khách hàng thành công");
+                    loadKhachHang();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa khách hàng không thành công");
+                }
             }
         }
     }

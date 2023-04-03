@@ -511,24 +511,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "D:\\Visual Studio\\Program Files (x86)\\NuGetPackages": {}
+    "C:\\Users\\WELCOME\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
+      "projectUniqueName": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
       "projectName": "BUS",
-      "projectPath": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\obj\\",
+      "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\BUS.csproj",
+      "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
+      "outputPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\BUS\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Visual Studio\\Program Files (x86)\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -536,18 +531,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj": {
-              "projectPath": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj"
+            "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj": {
+              "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DAO\\DAO.csproj"
             },
-            "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj": {
-              "projectPath": "D:\\CNPM\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj"
+            "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj": {
+              "projectPath": "D:\\App\\CNPM_TH\\DrugStoreManagement_CSharp\\DrugStore\\DTO\\DTO.csproj"
             }
           }
         }
@@ -580,7 +574,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

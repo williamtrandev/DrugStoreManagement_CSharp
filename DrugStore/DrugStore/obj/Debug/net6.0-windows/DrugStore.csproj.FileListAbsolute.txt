@@ -207,3 +207,5 @@ D:\CNPM\backup\DrugStore\DrugStore\obj\Debug\net6.0-windows\refint\DrugStore.dll
 D:\CNPM\backup\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.pdb
 D:\CNPM\backup\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.genruntimeconfig.cache
 D:\CNPM\backup\DrugStore\DrugStore\obj\Debug\net6.0-windows\ref\DrugStore.dll
+D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.FAddKhachHang.resources
+D:\App\CNPM_TH\DrugStoreManagement_CSharp\DrugStore\DrugStore\obj\Debug\net6.0-windows\DrugStore.khothuoc.resources
