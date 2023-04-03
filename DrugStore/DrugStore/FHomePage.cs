@@ -143,6 +143,15 @@ namespace DrugStore
             FAddNV fa = new FAddNV(this);
             fa.Show();
         }
+        private void btn_suanv_Click(object sender, EventArgs e)
+        {
+            String sdt = dgv_nv.CurrentRow.Cells["SDT"].Value.ToString();
+            String ten = dgv_nv.CurrentRow.Cells["HOTEN"].Value.ToString();
+            String diachi = dgv_nv.CurrentRow.Cells["DIACHI"].Value.ToString();
+            String pass = dgv_nv.CurrentRow.Cells["PASS"].Value.ToString();
+            FAddNV fa = new FAddNV(this, true, sdt, ten, diachi, pass);
+            fa.Show();
+        }
 
         private void btn_dangxuat_Click(object sender, EventArgs e)
         {
@@ -345,5 +354,7 @@ namespace DrugStore
                 }
             }
         }
+
+        
     }
 }

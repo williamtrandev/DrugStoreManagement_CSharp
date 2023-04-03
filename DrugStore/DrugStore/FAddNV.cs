@@ -14,11 +14,18 @@ namespace DrugStore
 {
     public partial class FAddNV : Form
     {
+        private bool action;
         FHomePage fhp;
-        public FAddNV(FHomePage fhp)
+        private string sdt, ten, diachi, pass;
+        public FAddNV(FHomePage fhp, bool action = false, String sdt="", String ten="", String diachi="", String pass="")
         {
             InitializeComponent();
             this.fhp = fhp;
+            this.action = action;
+            this.sdt = sdt;
+            this.ten = ten; 
+            this.diachi = diachi;
+            this.pass = pass;
         }
 
         private void FAddNV_Load(object sender, EventArgs e)
@@ -39,6 +46,15 @@ namespace DrugStore
             lb_validate_sdt.Text = "";
             lb_validate_diachi.Text = "";
             lb_validate_pass.Text = "";
+
+            if(action)
+            {
+                tb_sdt.Text = this.sdt;
+                tb_tennv.Text = this.ten;
+                tb_diachi.Text = this.diachi;
+                tb_matkhau.Text = this.pass;
+            }
+
         }
 
         private void pb_luu_Click(object sender, EventArgs e)
