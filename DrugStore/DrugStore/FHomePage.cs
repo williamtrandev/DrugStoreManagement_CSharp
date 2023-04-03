@@ -210,7 +210,7 @@ namespace DrugStore
             pnl_khothuoc.Visible = false;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
-
+            pnl_qlkh.Visible = false;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = false;
@@ -233,6 +233,7 @@ namespace DrugStore
             pnl_khothuoc.Visible = true;
             pnl_laphoadon.Visible = false;
             pnl_qlncc.Visible = false;
+            pnl_qlkh.Visible = false;
             pnl_onqlnv.Visible = false;
             pnl_onqlnh.Visible = false;
             pnl_onqlbh.Visible = false;
@@ -273,7 +274,7 @@ namespace DrugStore
             pnl_dmthuoc.Visible = false;
             pnl_khothuoc.Visible = false;
             pnl_laphoadon.Visible = false;
-            
+            pnl_qlkh.Visible=false;
             pnl_qlncc.Visible = true;
             pnl_onqlncc.Visible = true;
             pnl_onqlkh.Visible = false;
