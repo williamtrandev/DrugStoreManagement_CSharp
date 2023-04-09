@@ -186,6 +186,10 @@ namespace DrugStore
             dgv_dshd.DataSource = hoadonList;
             dgv_bh_danhMucThuoc.DataSource = ThuocBanHangList;
             dgv_doanhthu.DataSource = baoCaoHoaDonList;
+            txt_tongTien.Text = string.Format("{0:C5}", txt_tongTien.Text);
+            txtb_tienKhachDua.Text = string.Format("{0:C5}", txtb_tienKhachDua.Text);
+            txtb_tienTraLai.Text = string.Format("{0:C5}", txtb_tienTraLai.Text);
+            tb_tongdt.Text = string.Format("{0:C5}", txtb_tienTraLai.Text);
             loadNhanVien();
             loadThuoc();
             loadKhoThuoc();
