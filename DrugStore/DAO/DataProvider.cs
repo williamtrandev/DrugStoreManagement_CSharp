@@ -13,8 +13,8 @@ namespace DAO
     {
         // Using this for your string connection
         //private string connectionSTR = @"Data Source=LAPTOP-ODUIIAV3;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
-        private string connectionSTR = @"Data Source=ADMIN\LUNAPUS;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
-        //private string connectionSTR = @"Data Source=DESKTOP-1UMFDDC;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
+        //private string connectionSTR = @"Data Source=ADMIN\LUNAPUS;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
+        private string connectionSTR = @"Data Source=DESKTOP-1UMFDDC;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
         //private string connectionSTR = @"Data Source=MSI;Initial Catalog=QuanLyNhaThuoc;Integrated Security=True";
 
         private static DataProvider instance;

@@ -81,7 +81,7 @@ namespace DAO
         }
         public DataTable timthuocNH(String tenthuoc, String tenncc)
         {
-            String query = String.Format("select sodk, tenthuoc, hoatchat, gianhap from Thuoc t JOIN NhaCungCap ncc ON t.mancc = ncc.mancc where tenthuoc like N'{0}%' and ncc.tenncc=N'{1}'", tenthuoc, tenncc);
+            String query = String.Format("select t.SODK, t.TENTHUOC, t.HOATCHAT, t.GIANHAP from Thuoc t JOIN NhaCungCap ncc ON t.MANCC = ncc.MANCC where t.TENTHUOC like N'{0}%' and ncc.MANCC=N'{1}'", tenthuoc, tenncc);
             return DataProvider.Instance.ExecuteQuery(query);
 
         }

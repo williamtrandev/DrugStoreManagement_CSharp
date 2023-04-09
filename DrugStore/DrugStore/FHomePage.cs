@@ -13,6 +13,7 @@ using System.Drawing.Printing;
 using static System.Net.WebRequestMethods;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security.Cryptography;
+using System.Globalization;
 // new
 namespace DrugStore
 {
@@ -193,6 +194,7 @@ namespace DrugStore
             loadPhieuNhapHang();
             loadHoaDon();
             loadThuocBanHang();
+            formatDate(dgv_dsthuockt);
         }
 
         private void btn_themnv_Click(object sender, EventArgs e)
@@ -719,27 +721,41 @@ namespace DrugStore
             FAddNCC f = new FAddNCC(this);
             f.Show();
         }
-
+        private void formatDate(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                dgv.Rows[i].Cells[3].Value = (Convert.ToDateTime(dgv.Rows[i].Cells[3].Value.ToString())).ToString("dd/MM/yyyy");
+                //DateTime.ParseExact(dateInString, "M/d/yyyy", CultureInfo.InvariantCulture);
+            }
+        }
         private void btn_thuoc1t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 1);
+            formatDate(dgv_dsthuockt);
         }
 
         private void btn_thuoc3t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 3);
+            formatDate(dgv_dsthuockt);
+
 
         }
 
         private void btn_thuoc6t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 6);
+            formatDate(dgv_dsthuockt);
+
 
         }
 
         private void btn_thuochet_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.KhoThuocBUS.Instance.getThuocSapHetHan();
+            formatDate(dgv_dsthuockt);
+
         }
 
         private void btn_khothuoc_exportExcel_Click(object sender, EventArgs e)
@@ -781,8 +797,11 @@ namespace DrugStore
 
         private void dgv_dspn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string maphieu = dgv_dspn.CurrentRow.Cells["MAPHIEU"].Value.ToString();
-            dgv_ctpn.DataSource = ChiTietNhapHangBUS.Instance.getChiTietNhapHang(maphieu);
+            if(dgv_dspn.Rows.Count != 0)
+            {
+                string maphieu = dgv_dspn.CurrentRow.Cells["MAPHIEU"].Value.ToString();
+                dgv_ctpn.DataSource = ChiTietNhapHangBUS.Instance.getChiTietNhapHang(maphieu);
+            }
         }
 
         private void tb_timkiemNH_TextChanged(object sender, EventArgs e)
@@ -999,8 +1018,11 @@ namespace DrugStore
                     bool chechCongDiem = KhachHangBUS.Instance.updateDiem(sdtkh, diem);
                     loadKhachHang();
                     insertChiTietHoaDon();
+                    loadThuocBanHang();
                     disable();
                     pnl_dshd_qlbh.Visible = true;
+                    tb_sdt_qlbh.Text = "";
+                    tb_tenkh.Text = "";
                 }
             }
             else
@@ -1117,8 +1139,12 @@ namespace DrugStore
 
         private void dgv_dshd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string mahd = dgv_dshd.CurrentRow.Cells["MAHD"].Value.ToString();
-            dgv_cthd.DataSource = ChiTietHoaDonBUS.Instance.getChiTietHoaDon(mahd);
+            if(dgv_dshd.Rows.Count != 0)
+            {
+
+                string mahd = dgv_dshd.CurrentRow.Cells["MAHD"].Value.ToString();
+                dgv_cthd.DataSource = ChiTietHoaDonBUS.Instance.getChiTietHoaDon(mahd);
+            }
         }
 
         private void btn_bcdoanhthu_importExcel_Click(object sender, EventArgs e)
@@ -1494,7 +1520,12 @@ namespace DrugStore
 
         private void tb_timKiemThuoc_TextChanged(object sender, EventArgs e)
         {
-            dgv_bh_danhMucThuoc.DataSource = ThuocBUS.Instance.timThuocBH(tb_timKiemThuoc.Text.ToString());
+            String text = tb_timKiemThuoc.Text.ToString();
+            if (!String.IsNullOrEmpty(text))
+                dgv_bh_danhMucThuoc.DataSource = ThuocBUS.Instance.timThuocBH(text);
+            else
+                dgv_bh_danhMucThuoc.DataSource = ThuocBanHangList;
+
         }
 
         private void printDocument3_PrintPage(object sender, PrintPageEventArgs e)
@@ -1588,8 +1619,14 @@ namespace DrugStore
                 x = 50;
                 y += rowheight;
             }
-        
-    }
+            String total = "TỔNG TIỀN: " + txt_tongTien.Text.ToString();
+            Font totalFont = new Font("Arial", 12, FontStyle.Bold);
+            SizeF totalSize = e.Graphics.MeasureString(total, totalFont);
+            float totalX = e.PageBounds.Width / 2 - totalSize.Width / 2;
+            float totalY = y + 50;
+            e.Graphics.DrawString(total, totalFont, Brushes.Red, new PointF(totalX, totalY));
+            y += Convert.ToInt32(titleSize.Height + 50);
+        }
 
         private void tinhTienBanHang()
         {
