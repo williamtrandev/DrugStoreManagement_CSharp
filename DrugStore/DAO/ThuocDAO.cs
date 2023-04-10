@@ -61,7 +61,7 @@ namespace DAO
         }
         public DataTable thongKeThuocTrongKho(int hsd1, int hsd2)
         {
-            String query = "select t.SODK, t.TENTHUOC, kt.MAPHIEU, HSD, kt.SOLUONG from Thuoc t join KhoThuoc kt ON t.SODK = kt.SODK WHERE DATEDIFF(month,GETDATE(),kt.HSD) BETWEEN @hsd1 AND @hsd2";
+            String query = "select t.SODK, t.TENTHUOC, kt.MAPHIEU, HSD, kt.SOLUONG from Thuoc t join KhoThuoc kt ON t.SODK = kt.SODK WHERE DATEDIFF(month,GETDATE(),kt.HSD) BETWEEN @hsd1 AND @hsd2 AND kt.SOLUONG > 0";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { hsd1, hsd2 });
         }
         public DataTable timThuocTrongKho(String tenthuoc)

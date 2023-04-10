@@ -198,7 +198,6 @@ namespace DrugStore
             loadPhieuNhapHang();
             loadHoaDon();
             loadThuocBanHang();
-            formatDate(dgv_dsthuockt);
         }
 
         private void btn_themnv_Click(object sender, EventArgs e)
@@ -241,25 +240,29 @@ namespace DrugStore
 
         private void btn_xoathuoc_Click(object sender, EventArgs e)
         {
-            string sodk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
-            string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
-            DialogResult res = MessageBox.Show("Xóa thuốc này thì mọi hóa đơn liên quan đến thuốc này cũng sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenthuoc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
-            {
-                bool check = ThuocBUS.Instance.deleteThuoc(sodk);
-                if (check)
-                {
-                    MessageBox.Show("Xóa thuốc thành công");
-                    loadThuoc();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa thuốc không thành công");
-                }
-            }
-            if (res == DialogResult.Cancel)
+            if(dgv_dsthuoc.RowCount > 0)
             {
 
+                string sodk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
+                string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
+                DialogResult res = MessageBox.Show("Xóa thuốc này thì mọi hóa đơn liên quan đến thuốc này cũng sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenthuoc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    bool check = ThuocBUS.Instance.deleteThuoc(sodk);
+                    if (check)
+                    {
+                        MessageBox.Show("Xóa thuốc thành công");
+                        loadThuoc();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thuốc không thành công");
+                    }
+                }
+                if (res == DialogResult.Cancel)
+                {
+
+                }
             }
         }
 
@@ -308,27 +311,31 @@ namespace DrugStore
 
         private void btn_xoancc_Click(object sender, EventArgs e)
         {
-            string mancc = dgv_ncc.CurrentRow.Cells["MANCC"].Value.ToString();
-            string tenncc = dgv_ncc.CurrentRow.Cells["TENNCC1"].Value.ToString();
-            DialogResult res = MessageBox.Show("Xóa nhà cung cấp này thì mọi phiếu nhập hàng và thuốc có liên quan sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenncc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
-            {
-                bool xoaThuoc = ThuocBUS.Instance.deleteThuocNCC(mancc);
-                if (xoaThuoc) { }
-                bool check = NhaCungCapBUS.Instance.deleteNCC(mancc);
-                if (check)
-                {
-                    loadNCC();
-                    loadThuoc();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa nhà cung cấp không thành công");
-                }
-            }
-            if (res == DialogResult.Cancel)
+            if(dgv_ncc.RowCount > 0)
             {
 
+                string mancc = dgv_ncc.CurrentRow.Cells["MANCC"].Value.ToString();
+                string tenncc = dgv_ncc.CurrentRow.Cells["TENNCC1"].Value.ToString();
+                DialogResult res = MessageBox.Show("Xóa nhà cung cấp này thì mọi phiếu nhập hàng và thuốc có liên quan sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenncc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    bool xoaThuoc = ThuocBUS.Instance.deleteThuocNCC(mancc);
+                    if (xoaThuoc) { }
+                    bool check = NhaCungCapBUS.Instance.deleteNCC(mancc);
+                    if (check)
+                    {
+                        loadNCC();
+                        loadThuoc();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa nhà cung cấp không thành công");
+                    }
+                }
+                if (res == DialogResult.Cancel)
+                {
+
+                }
             }
         }
 
@@ -340,27 +347,34 @@ namespace DrugStore
 
         private void btn_suakh_Click(object sender, EventArgs e)
         {
-            string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
-            string name = dgv_qlkh.CurrentRow.Cells["TENKH"].Value.ToString();
-            FAddKhachHang fa = new FAddKhachHang(true, this, sdt, name);
-            fa.Show();
+            if(dgv_qlkh.RowCount != 0)
+            {
+
+                string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
+                string name = dgv_qlkh.CurrentRow.Cells["TENKH"].Value.ToString();
+                FAddKhachHang fa = new FAddKhachHang(true, this, sdt, name);
+                fa.Show();
+            }
         }
 
         private void btn_xoakh_Click(object sender, EventArgs e)
         {
-            string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
-            DialogResult res = MessageBox.Show("Xóa thuốc khách hàng này không thể undo", "Bạn có chắc là muốn xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
+            if(dgv_qlkh.RowCount != 0)
             {
-                bool check = KhachHangBUS.Instance.deleteCustomer(sdt);
-                if (check)
+                string sdt = dgv_qlkh.CurrentRow.Cells["SDT_KH"].Value.ToString();
+                DialogResult res = MessageBox.Show("Xóa khách hàng này không thể undo", "Bạn có chắc là muốn xóa", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
                 {
-                    MessageBox.Show("Xóa khách hàng thành công");
-                    loadKhachHang();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa khách hàng không thành công");
+                    bool check = KhachHangBUS.Instance.deleteCustomer(sdt);
+                    if (check)
+                    {
+                        MessageBox.Show("Xóa khách hàng thành công");
+                        loadKhachHang();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa khách hàng không thành công");
+                    }
                 }
             }
         }
@@ -386,30 +400,38 @@ namespace DrugStore
 
         private void btn_suanv_Click(object sender, EventArgs e)
         {
-            String sdt = dgv_nv.CurrentRow.Cells["SDT"].Value.ToString();
-            String hoten = dgv_nv.CurrentRow.Cells["HOTEN"].Value.ToString();
-            String diachi = dgv_nv.CurrentRow.Cells["DIACHI"].Value.ToString();
-            String pass = dgv_nv.CurrentRow.Cells["PASS"].Value.ToString();
-            FAddNV fa = new FAddNV(this, true, sdt, hoten, diachi, pass);
-            fa.Show();
+            if(dgv_nv.RowCount != 0)
+            {
+
+                String sdt = dgv_nv.CurrentRow.Cells["SDT"].Value.ToString();
+                String hoten = dgv_nv.CurrentRow.Cells["HOTEN"].Value.ToString();
+                String diachi = dgv_nv.CurrentRow.Cells["DIACHI"].Value.ToString();
+                String pass = dgv_nv.CurrentRow.Cells["PASS"].Value.ToString();
+                FAddNV fa = new FAddNV(this, true, sdt, hoten, diachi, pass);
+                fa.Show();
+            }
         }
 
         private void btn_xoanv_Click(object sender, EventArgs e)
         {
-            string sdt = dgv_nv.CurrentRow.Cells["SDT"].Value.ToString();
-            DialogResult res = MessageBox.Show("Xóa nhân viên này? Hành động này không thể undo", "Bạn có chắc là muốn xóa?", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
+            if(dgv_nv.RowCount != 0)
             {
 
-                bool check = NhanVienBUS.Instance.deleteNhanVien(sdt);
-                if (check)
+                string sdt = dgv_nv.CurrentRow.Cells["SDT"].Value.ToString();
+                DialogResult res = MessageBox.Show("Xóa nhân viên này? Hành động này không thể undo", "Bạn có chắc là muốn xóa?", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
                 {
-                    MessageBox.Show("Xóa nhân viên thành công");
-                    loadNhanVien();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa nhân viên không thành công");
+
+                    bool check = NhanVienBUS.Instance.deleteNhanVien(sdt);
+                    if (check)
+                    {
+                        MessageBox.Show("Xóa nhân viên thành công");
+                        loadNhanVien();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa nhân viên không thành công");
+                    }
                 }
             }
         }
@@ -471,34 +493,42 @@ namespace DrugStore
 
         private void dgv_dsthuoc_pnh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sodk = dgv_dsthuoc_pnh.CurrentRow.Cells["SODKPNH"].Value.ToString();
-            string tenThuoc = dgv_dsthuoc_pnh.CurrentRow.Cells["TENTHUOCPNH"].Value.ToString();
-            double gianhap = Convert.ToDouble(dgv_dsthuoc_pnh.CurrentRow.Cells["GIANHAPPNH"].Value);
-            int soluongnhap = 1;
-            DateTime hsd = DateTime.Now;
-
-            if (!dsthuoc_pnh.Contains(sodk))
+            if(dgv_dsthuoc_pnh.RowCount != 0)
             {
-                dsthuoc_pnh.Add(sodk);
-                dataTable_pnh.Rows.Add(sodk, tenThuoc, gianhap, soluongnhap, hsd);
-                dgv_phieunh.DataSource = dataTable_pnh;
-                tinhTongGiaNhap();
-                dgv_dsthuoc_pnh.CurrentRow.DefaultCellStyle.BackColor = Color.Aqua;
+
+                string sodk = dgv_dsthuoc_pnh.CurrentRow.Cells["SODKPNH"].Value.ToString();
+                string tenThuoc = dgv_dsthuoc_pnh.CurrentRow.Cells["TENTHUOCPNH"].Value.ToString();
+                double gianhap = Convert.ToDouble(dgv_dsthuoc_pnh.CurrentRow.Cells["GIANHAPPNH"].Value);
+                int soluongnhap = 1;
+                DateTime hsd = DateTime.Now;
+
+                if (!dsthuoc_pnh.Contains(sodk))
+                {
+                    dsthuoc_pnh.Add(sodk);
+                    dataTable_pnh.Rows.Add(sodk, tenThuoc, gianhap, soluongnhap, hsd);
+                    dgv_phieunh.DataSource = dataTable_pnh;
+                    tinhTongGiaNhap();
+                    dgv_dsthuoc_pnh.CurrentRow.DefaultCellStyle.BackColor = Color.Aqua;
+                }
             }
         }
 
         private void dgv_phieunh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sodk = dgv_phieunh.CurrentRow.Cells["SODKPNH1"].Value.ToString();
-            dsthuoc_pnh.Remove(sodk);
-            dgv_phieunh.Rows.Remove(dgv_phieunh.CurrentRow);
-            ((DataTable)dgv_phieunh.DataSource).AcceptChanges();
-            tinhTongGiaNhap();
-            foreach (DataGridViewRow row in dgv_dsthuoc_pnh.Rows)
+            if(dgv_phieunh.RowCount != 0)
             {
-                if (row.Cells["SODKPNH"].Value.ToString() == sodk)
+
+                string sodk = dgv_phieunh.CurrentRow.Cells["SODKPNH1"].Value.ToString();
+                dsthuoc_pnh.Remove(sodk);
+                dgv_phieunh.Rows.Remove(dgv_phieunh.CurrentRow);
+                ((DataTable)dgv_phieunh.DataSource).AcceptChanges();
+                tinhTongGiaNhap();
+                foreach (DataGridViewRow row in dgv_dsthuoc_pnh.Rows)
                 {
-                    row.DefaultCellStyle.BackColor = Color.White;
+                    if (row.Cells["SODKPNH"].Value.ToString() == sodk)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
                 }
             }
         }
@@ -674,50 +704,62 @@ namespace DrugStore
 
         private void btn_suathuoc_Click(object sender, EventArgs e)
         {
-            string sdk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
-            string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
-            string hoatchat = dgv_dsthuoc.CurrentRow.Cells["HOATCHAT"].Value.ToString();
-            string donvitinh = dgv_dsthuoc.CurrentRow.Cells["DONVITINH"].Value.ToString();
-            string qcdg = dgv_dsthuoc.CurrentRow.Cells["QUYCACHDONGGOI"].Value.ToString();
-            string ncc = dgv_dsthuoc.CurrentRow.Cells["TENNCC"].Value.ToString();
-            float gianhap = (float)Convert.ToDouble(dgv_dsthuoc.CurrentRow.Cells["GIANHAP"].Value);
-            float giaban = (float)Convert.ToDouble(dgv_dsthuoc.CurrentRow.Cells["GIABAN"].Value);
-            FAddThuoc f = new FAddThuoc(this, true, sdk, ncc, tenthuoc, hoatchat, donvitinh, qcdg, gianhap, giaban);
-            f.Show();
+            if(dgv_dsthuoc.RowCount > 0)
+            {
+
+                string sdk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
+                string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
+                string hoatchat = dgv_dsthuoc.CurrentRow.Cells["HOATCHAT"].Value.ToString();
+                string donvitinh = dgv_dsthuoc.CurrentRow.Cells["DONVITINH"].Value.ToString();
+                string qcdg = dgv_dsthuoc.CurrentRow.Cells["QUYCACHDONGGOI"].Value.ToString();
+                string ncc = dgv_dsthuoc.CurrentRow.Cells["TENNCC"].Value.ToString();
+                float gianhap = (float)Convert.ToDouble(dgv_dsthuoc.CurrentRow.Cells["GIANHAP"].Value);
+                float giaban = (float)Convert.ToDouble(dgv_dsthuoc.CurrentRow.Cells["GIABAN"].Value);
+                FAddThuoc f = new FAddThuoc(this, true, sdk, ncc, tenthuoc, hoatchat, donvitinh, qcdg, gianhap, giaban);
+                f.Show();
+            }
         }
 
         private void btn_xoathuoc_Click_1(object sender, EventArgs e)
         {
-            string sodk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
-            string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
-            DialogResult res = MessageBox.Show("Xóa thuốc này thì mọi hóa đơn liên quan đến thuốc này cũng sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenthuoc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
-            {
-                bool check = ThuocBUS.Instance.deleteThuoc(sodk);
-                if (check)
-                {
-                    MessageBox.Show("Xóa thuốc thành công");
-                    loadThuoc();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa thuốc không thành công");
-                }
-            }
-            if (res == DialogResult.Cancel)
+            if(dgv_dsthuoc.RowCount > 0)
             {
 
+                string sodk = dgv_dsthuoc.CurrentRow.Cells["SODK"].Value.ToString();
+                string tenthuoc = dgv_dsthuoc.CurrentRow.Cells["TENTHUOC"].Value.ToString();
+                DialogResult res = MessageBox.Show("Xóa thuốc này thì mọi hóa đơn liên quan đến thuốc này cũng sẽ bị xóa. Hành động này không thể undo", "Bạn có chắc là muốn xóa: " + tenthuoc, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    bool check = ThuocBUS.Instance.deleteThuoc(sodk);
+                    if (check)
+                    {
+                        MessageBox.Show("Xóa thuốc thành công");
+                        loadThuoc();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thuốc không thành công");
+                    }
+                }
+                if (res == DialogResult.Cancel)
+                {
+
+                }
             }
         }
 
         private void btn_suancc_Click(object sender, EventArgs e)
         {
-            String mancc = dgv_ncc.CurrentRow.Cells["MANCC"].Value.ToString();
-            String tenncc = dgv_ncc.CurrentRow.Cells["TENNCC1"].Value.ToString();
-            String sdt = dgv_ncc.CurrentRow.Cells["SDTNCC"].Value.ToString();
-            String diachi = dgv_ncc.CurrentRow.Cells["DIACHINCC"].Value.ToString();
-            FAddNCC f = new FAddNCC(this, true, mancc, tenncc, sdt, diachi);
-            f.Show();
+            if(dgv_ncc.RowCount > 0)
+            {
+
+                String mancc = dgv_ncc.CurrentRow.Cells["MANCC"].Value.ToString();
+                String tenncc = dgv_ncc.CurrentRow.Cells["TENNCC1"].Value.ToString();
+                String sdt = dgv_ncc.CurrentRow.Cells["SDTNCC"].Value.ToString();
+                String diachi = dgv_ncc.CurrentRow.Cells["DIACHINCC"].Value.ToString();
+                FAddNCC f = new FAddNCC(this, true, mancc, tenncc, sdt, diachi);
+                f.Show();
+            }
         }
 
         private void btn_themncc_Click(object sender, EventArgs e)
@@ -736,29 +778,22 @@ namespace DrugStore
         private void btn_thuoc1t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 1);
-            formatDate(dgv_dsthuockt);
         }
 
         private void btn_thuoc3t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 3);
-            formatDate(dgv_dsthuockt);
-
 
         }
 
         private void btn_thuoc6t_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.ThuocBUS.Instance.thongKeThuocTrongKho(0, 6);
-            formatDate(dgv_dsthuockt);
-
-
         }
 
         private void btn_thuochet_Click(object sender, EventArgs e)
         {
             dgv_dsthuockt.DataSource = BUS.KhoThuocBUS.Instance.getThuocSapHetHan();
-            formatDate(dgv_dsthuockt);
 
         }
 
@@ -1079,18 +1114,22 @@ namespace DrugStore
 
         private void dgv_bh_hoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sodk = dgv_bh_hoaDon.CurrentRow.Cells["SODK_HD"].Value.ToString();
-            string maphieu = dgv_bh_hoaDon.CurrentRow.Cells["MAPHIEU_HD"].Value.ToString();
-            dsthuoc_banhang.Remove(sodk);
-            dgv_bh_hoaDon.Rows.Remove(dgv_bh_hoaDon.CurrentRow);
-            ((DataTable)dgv_bh_hoaDon.DataSource).AcceptChanges();
-            tinhTienBanHang();
-            foreach (DataGridViewRow row in dgv_bh_danhMucThuoc.Rows)
+            if(dgv_bh_hoaDon.RowCount > 0)
             {
-                if (row.Cells["SODK_BH"].Value.ToString() == sodk &&
-                    row.Cells["MAPHIEU_BH"].Value.ToString() == maphieu)
+
+                string sodk = dgv_bh_hoaDon.CurrentRow.Cells["SODK_HD"].Value.ToString();
+                string maphieu = dgv_bh_hoaDon.CurrentRow.Cells["MAPHIEU_HD"].Value.ToString();
+                dsthuoc_banhang.Remove(sodk);
+                dgv_bh_hoaDon.Rows.Remove(dgv_bh_hoaDon.CurrentRow);
+                ((DataTable)dgv_bh_hoaDon.DataSource).AcceptChanges();
+                tinhTienBanHang();
+                foreach (DataGridViewRow row in dgv_bh_danhMucThuoc.Rows)
                 {
-                    row.DefaultCellStyle.BackColor = Color.White;
+                    if (row.Cells["SODK_BH"].Value.ToString() == sodk &&
+                        row.Cells["MAPHIEU_BH"].Value.ToString() == maphieu)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
                 }
             }
         }
@@ -1164,19 +1203,23 @@ namespace DrugStore
 
         private void dgv_bh_danhMucThuoc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sodk = dgv_bh_danhMucThuoc.CurrentRow.Cells["SODK_BH"].Value.ToString();
-            string tenThuoc = dgv_bh_danhMucThuoc.CurrentRow.Cells["TENTHUOC_BH"].Value.ToString();
-            string maphieu = dgv_bh_danhMucThuoc.CurrentRow.Cells["MAPHIEU_BH"].Value.ToString();
-            double giaban = Convert.ToDouble(dgv_bh_danhMucThuoc.CurrentRow.Cells["GIABAN_BH"].Value);
-            int soluongnhap = 1;
-
-            if (!dsthuoc_banhang.Contains(sodk))
+            if(dgv_bh_danhMucThuoc.RowCount > 0)
             {
-                dsthuoc_banhang.Add(sodk);
-                dataTable_banhang.Rows.Add(sodk, tenThuoc, maphieu, giaban, soluongnhap);
-                dgv_bh_hoaDon.DataSource = dataTable_banhang;
-                tinhTienBanHang();
-                dgv_bh_danhMucThuoc.CurrentRow.DefaultCellStyle.BackColor = Color.Aqua;
+
+                string sodk = dgv_bh_danhMucThuoc.CurrentRow.Cells["SODK_BH"].Value.ToString();
+                string tenThuoc = dgv_bh_danhMucThuoc.CurrentRow.Cells["TENTHUOC_BH"].Value.ToString();
+                string maphieu = dgv_bh_danhMucThuoc.CurrentRow.Cells["MAPHIEU_BH"].Value.ToString();
+                double giaban = Convert.ToDouble(dgv_bh_danhMucThuoc.CurrentRow.Cells["GIABAN_BH"].Value);
+                int soluongnhap = 1;
+
+                if (!dsthuoc_banhang.Contains(sodk))
+                {
+                    dsthuoc_banhang.Add(sodk);
+                    dataTable_banhang.Rows.Add(sodk, tenThuoc, maphieu, giaban, soluongnhap);
+                    dgv_bh_hoaDon.DataSource = dataTable_banhang;
+                    tinhTienBanHang();
+                    dgv_bh_danhMucThuoc.CurrentRow.DefaultCellStyle.BackColor = Color.Aqua;
+                }
             }
         }
 

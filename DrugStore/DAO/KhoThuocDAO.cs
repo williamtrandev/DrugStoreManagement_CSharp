@@ -47,7 +47,7 @@ namespace DAO
         }
         public DataTable getThuocSapHetHan()
         {
-            String query = string.Format("SELECT Thuoc.SODK, Thuoc.TENTHUOC, MAPHIEU, HSD, SOLUONG FROM KhoThuoc JOIN Thuoc ON Thuoc.SODK = KhoThuoc.SODK WHERE DATEDIFF(DAY, GETDATE(), HSD) >= 0 AND (SOLUONG BETWEEN 0 AND 100)");
+            String query = string.Format("SELECT Thuoc.SODK, Thuoc.TENTHUOC, MAPHIEU, HSD, SOLUONG FROM KhoThuoc JOIN Thuoc ON Thuoc.SODK = KhoThuoc.SODK WHERE DATEDIFF(DAY, GETDATE(), HSD) >= 0 AND (SOLUONG BETWEEN 1 AND 100)");
             return DataProvider.Instance.ExecuteQuery(query);
         }
     }
